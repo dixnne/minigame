@@ -1,0 +1,19 @@
+#game-page {
+    height: 100vh;
+}
+
+#dropsSection {
+    height: 50%;
+}
+
+#dragsSection {
+    height: 50%;
+}
+
+#gameSection {
+    height: 85%;
+}
+
+.drag-box {
+    height: 80%;
+}
