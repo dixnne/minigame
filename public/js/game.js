@@ -1,6 +1,11 @@
-var time = 0;
-var interval;
-var display = document.getElementById("display");
+let time = 0;
+let interval;
+let display = document.getElementById("display");
+let ctx = [];
+let drop = [];
+let canvas = [];
+let pointsSum = 0;
+let hits = 0;
 
 class Drop{
     constructor(id, character, audio, dropSrc){
@@ -21,20 +26,20 @@ class Drag{
 }
 
 let drops = [
-    new Drop(0, "Pikachu", "../assets/audios/", "./images/easy/"),
-    new Drop(1, "Goku", "../assets/audios/",  "./images/easy/"),
-    new Drop(2, "Luffy", "../assets/audios/", "./images/easy/"),
-    new Drop(3, "Naruto", "../assets/audios/", "./images/easy/"),
-    new Drop(4, "Oliver", "../assets/audios/", "./images/easy/"),
-    new Drop(5, "Seiya", "../assets/audios/", "./images/easy/"),
-    new Drop(6, "Santana", "../assets/audios/", "./images/easy/"),
-    new Drop(7, "Anya", "../assets/audios/", "./images/easy/"),
-    new Drop(8, "Asuka", "../assets/audios/", "./images/easy/"),
-    new Drop(9, "Kira", "../assets/audios/", "./images/easy/"),
-    new Drop(10, "Sailor Moon", "../assets/audios/", "./images/easy/"),
-    new Drop(11, "Eren", "../assets/audios/", "./images/easy/"),
-    new Drop(12, "Nezuko", "../assets/audios/", "./images/easy/"),
-    new Drop(13, "Yugi", "../assets/audios/", "./images/easy/")
+    new Drop(0, "Pikachu", "../assets/audios/", "./images/easy/pokeball.png"),
+    new Drop(1, "Goku", "../assets/audios/",  "./images/easy/pokeball.png"),
+    new Drop(2, "Luffy", "../assets/audios/", "./images/easy/pokeball.png"),
+    new Drop(3, "Naruto", "../assets/audios/", "./images/easy/pokeball.png"),
+    new Drop(4, "Oliver", "../assets/audios/", "./images/easy/pokeball.png"),
+    new Drop(5, "Seiya", "../assets/audios/", "./images/easy/pokeball.png"),
+    new Drop(6, "Santana", "../assets/audios/", "./images/easy/pokeball.png"),
+    new Drop(7, "Anya", "../assets/audios/", "./images/easy/pokeball.png"),
+    new Drop(8, "Asuka", "../assets/audios/", "./images/easy/pokeball.png"),
+    new Drop(9, "Kira", "../assets/audios/", "./images/easy/pokeball.png"),
+    new Drop(10, "Sailor Moon", "../assets/audios/", "./images/easy/pokeball.png"),
+    new Drop(11, "Eren", "../assets/audios/", "./images/easy/pokeball.png"),
+    new Drop(12, "Nezuko", "../assets/audios/", "./images/easy/pokeball.png"),
+    new Drop(13, "Yugi", "../assets/audios/", "./images/easy/pokeball.png")
 ];
 
 let drags = [
@@ -82,13 +87,138 @@ document.getElementById("menu").addEventListener("click", () => {
 function start() {
 
     startStopwatch();
+    document.getElementById("points").innerHTML = 0;
     document.getElementById("name").innerHTML = localStorage.name;
-    document.getElementById("progressBar").style.width = "60%";
+    document.getElementById("progressBar").style.width = "0%";
     shuffle(drags);
     characters = drags.slice(0,3);
     setDrags(characters);
     scenarios = setScenarios(characters);
     shuffle(scenarios);
+    drawScenarios(scenarios);
+
+    document.querySelector("#dragBox1 > img").addEventListener('dragstart', dragging, false);
+    document.querySelector("#dragBox2 > img").addEventListener('dragstart', dragging, false);
+    document.querySelector("#dragBox3 > img").addEventListener('dragstart', dragging, false);
+    document.querySelector("#dragBox1 > img").addEventListener('dragend', dragEnded, false);
+    document.querySelector("#dragBox2 > img").addEventListener('dragend', dragEnded, false);
+    document.querySelector("#dragBox3 > img").addEventListener('dragend', dragEnded, false);
+
+    canvas = document.querySelectorAll("#dropsSection > canvas");
+    for (let index = 0; index < canvas.length; index++) {
+        drop[index] = canvas[index];
+        ctx[index] = drop[index].getContext('2d');
+        drop[index].addEventListener('dragenter', dragEnter, false); 
+        drop[index].addEventListener('dragover', dragOver, false);
+        drop[index].addEventListener('drop', dropping, false);
+    }
+}
+
+function dragEnter(e) {
+    e.preventDefault();
+    console.log("Drag Enter");
+}
+
+function dragOver(e) {
+    e.preventDefault();
+    console.log("Drag Over");
+}
+
+function dragEnded(e) {
+    element = e.target; 
+    console.log("Drag End");
+}
+
+function dragging(e) { 
+    element = e.target;
+    e.dataTransfer.setData('Text', element.getAttribute('id'), element.getAttribute('width'), element.getAttribute('height')); 
+    e.dataTransfer.setDragImage (e.target, 0, 0);
+    console.log("Drag Start");
+}
+
+function dropping(e) {
+    e.preventDefault();
+    let id = e.dataTransfer.getData('Text');
+    let element = document.getElementById(id);
+    var posx = e.pageX - e.target.offsetLeft;
+    var posy = e.pageY - e.target.offsetTop; 
+    if (e.target.id == "c" + element.id && posx > 0 && posx < 200) {
+        for (let index = 0; index < drop.length; index++) {
+            const canva = drop[index];
+            if (canva.id == e.target.id) {
+                ctx[index].drawImage(element, 50, 50, element.width, element.height);
+                updatePoints(true);
+                hits++;
+                updateProgress();
+                element.style.visibility ='hidden';
+                for (let index = 0; index < characters.length; index++) {
+                    let character = characters[index];
+                    if (element.id == character.id) {
+                        let phrase = character.audio;
+                        let cname = character.character;
+                        document.getElementById("s" + e.target.id).innerHTML = cname;
+                    }
+                }
+            }
+        }
+    } else {
+        updatePoints(false);
+    }
+}
+
+function updatePoints(pointsState) {
+
+    let points = 0;
+    if (pointsState) {
+        points = 1;
+        if (time <= 20) {
+            points = points * 5;
+        } else if (time <= 40 && time > 20) {
+            points = points * 4;
+        } else if (time <= 60 && time > 40) {
+            points = points * 3;
+        } else if (time <= 80 && time > 60) {
+            points = points * 2;
+        } else {
+            points = points * 1;
+        }
+
+    } else {
+        points = -1;
+        if (time <= 20) {
+            points = points * 1;
+        } else if (time <= 40 && time > 20) {
+            points = points * 2;
+        } else if (time <= 60 && time > 40) {
+            points = points * 3;
+        } else if (time <= 80 && time > 60) {
+            points = points * 4;
+        } else {
+            points = points * 5;
+        }
+    }
+
+    
+
+    pointsSum += points;
+    document.getElementById("points").innerHTML = pointsSum;
+}
+
+function updateProgress() {
+    switch (hits) {
+        case 1:
+            document.getElementById("progressBar").style.width = "33%";
+            break;
+        case 2:
+            document.getElementById("progressBar").style.width = "66%";
+            break;  
+        case 3:
+            document.getElementById("progressBar").style.width = "100%";
+            break;
+        default:
+            document.getElementById("progressBar").style.width = "0%";
+            break;
+    }
 }
 
 function startStopwatch() {
@@ -149,13 +279,14 @@ function drawScenarios(scenarios) {
     scenarios.forEach(scenario => {
         let canvas = document.getElementById("dropBox" + i);
         let ctx = canvas.getContext("2d");
-        canvas.id = scenario.id;
+        canvas.id = "c" + scenario.id;
+        document.getElementById("s" + i).id = "sc" + scenario.id;
         
         let img= new Image()
         img.src= scenario.dropSrc;
 
         img.onload = () => {
-            ctx.drawImage(img,0,0,300, 300);
+            ctx.drawImage(img,0,0,250, 250);
         };
         i++;
     });

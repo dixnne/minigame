@@ -35,7 +35,7 @@
                     </div>
                     <span id="time" class="h3 lato-black color3 border-bottom">Time: <span id="display">00:00:00</span></span>
                     <span id="name" class="h2 russo-one-regular color4 border-bottom">NoobMaster69</span>
-                    <span id="time" class="h3 lato-black color3 border-bottom">Points: 0</span>
+                    <span class="h3 lato-black color3 border-bottom">Points: <span id="points">0</span></span>
                     <div>
                         <audio id="audio" src="./assets/lol.mp3"></audio>
                         <button id="playPause" class="music-btn btn btn-lg p-2 btn-light rounded-5">
@@ -63,10 +63,15 @@
                 </div>
             </div>
             <section id="gameSection">
-                <div id="dropsSection" class="d-flex align-items-center justify-content-center">
-                    <canvas id="dropBox1" height="300px" width="300px"></canvas>
-                    <canvas id="dropBox1" height="300px" width="300px"></canvas>
-                    <canvas id="dropBox1" height="300px" width="300px"></canvas>
+                <div id="dropsSection" class="container col-10 d-flex align-items-center justify-content-between">
+                    <canvas id="dropBox1" height="250px" width="250px"></canvas>
+                    <canvas id="dropBox2" height="250px" width="250px"></canvas>
+                    <canvas id="dropBox3" height="250px" width="250px"></canvas>
+                </div>
+                <div class="container col-8 d-flex align-items-center justify-content-between">
+                    <span id="s1" class="h3 color4 lato-black"></span>
+                    <span id="s2" class="h3 color4 lato-black"></span>
+                    <span id="s3" class="h3 color4 lato-black"></span>
                 </div>
                 <div id="dragsSection" class="bg-color2 d-flex align-items-center justify-content-center">
                     <div id="dragBox1" class="drag-box bg-color1 col-3 rounded-3 d-flex justify-content-center align-items-center">
