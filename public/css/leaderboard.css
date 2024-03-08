@@ -1,0 +1,12 @@
+#leaderboard-page {
+    min-height: 100vh;
+}
+
+#bootstrap-override #leaderboard-page{
+    height: 100%;
+    color: #fff;
+    background: -webkit-linear-gradient(110deg, #6FEDD6 33%, rgba(0, 0, 0, 0) 33%), -webkit-linear-gradient(110deg, #FF9551 66%, #FF4A4A 66%);
+    background: -o-linear-gradient(110deg, #6FEDD6 33%, rgba(0, 0, 0, 0) 33%), -o-linear-gradient(110deg, #FF9551 66%, #FF4A4A 66%);
+    background: -moz-linear-gradient(110deg, #6FEDD6 33%, rgba(0, 0, 0, 0) 33%), -moz-linear-gradient(110deg, #FF9551 66%, #FF4A4A 66%);
+    background: linear-gradient(110deg, #6FEDD6 33%, rgba(0, 0, 0, 0) 33%), linear-gradient(110deg, #FF9551 66%, #FF4A4A 66%);
+}
