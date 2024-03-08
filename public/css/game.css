@@ -3,7 +3,7 @@
 }
 
 #dropsSection {
-    height: 50%;
+    height: 48%;
 }
 
 #dragsSection {
@@ -16,4 +16,18 @@
 
 .drag-box {
     height: 80%;
+}
+
+#namesSection {
+    height: 10%;
+}
+
+span.name{
+	letter-spacing:0.01em;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    text-shadow: 
+        2px 2px #FF4A4A,
+        4px 4px #000000;
 }

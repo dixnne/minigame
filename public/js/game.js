@@ -92,6 +92,7 @@ function start() {
     document.getElementById("progressBar").style.width = "0%";
     shuffle(drags);
     characters = drags.slice(0,3);
+    drags = drags.slice(3,drags.length);
     setDrags(characters);
     scenarios = setScenarios(characters);
     shuffle(scenarios);
@@ -149,6 +150,7 @@ function dropping(e) {
                 ctx[index].drawImage(element, 50, 50, element.width, element.height);
                 updatePoints(true);
                 hits++;
+                console.log(hits);
                 updateProgress();
                 element.style.visibility ='hidden';
                 for (let index = 0; index < characters.length; index++) {
@@ -157,6 +159,33 @@ function dropping(e) {
                         let phrase = character.audio;
                         let cname = character.character;
                         document.getElementById("s" + e.target.id).innerHTML = cname;
+                        if (hits == 3) {
+                            setTimeout(function(){
+                                characters = drags.slice(0,3);
+                                setDrags(characters);
+                                scenarios = setScenarios(characters);
+                                shuffle(scenarios);
+                                drawScenarios(scenarios);
+                                document.querySelector("#dragBox1 > img").addEventListener('dragstart', dragging, false);
+                                document.querySelector("#dragBox2 > img").addEventListener('dragstart', dragging, false);
+                                document.querySelector("#dragBox3 > img").addEventListener('dragstart', dragging, false);
+                                document.querySelector("#dragBox1 > img").addEventListener('dragend', dragEnded, false);
+                                document.querySelector("#dragBox2 > img").addEventListener('dragend', dragEnded, false);
+                                document.querySelector("#dragBox3 > img").addEventListener('dragend', dragEnded, false);
+
+                                canvas = document.querySelectorAll("#dropsSection > canvas");
+                                for (let index = 0; index < canvas.length; index++) {
+                                    drop[index] = canvas[index];
+                                    ctx[index] = drop[index].getContext('2d');
+                                    drop[index].addEventListener('dragenter', dragEnter, false); 
+                                    drop[index].addEventListener('dragover', dragOver, false);
+                                    drop[index].addEventListener('drop', dropping, false);
+                                }
+                            }, 5000);
+
+                        } else if (hits >= 6) {
+                            win();
+                        }
                     }
                 }
             }
@@ -171,13 +200,13 @@ function updatePoints(pointsState) {
     let points = 0;
     if (pointsState) {
         points = 1;
-        if (time <= 20) {
+        if (time <= 10) {
             points = points * 5;
-        } else if (time <= 40 && time > 20) {
+        } else if (time <= 20 && time > 10) {
             points = points * 4;
-        } else if (time <= 60 && time > 40) {
+        } else if (time <= 30 && time > 20) {
             points = points * 3;
-        } else if (time <= 80 && time > 60) {
+        } else if (time <= 40 && time > 30) {
             points = points * 2;
         } else {
             points = points * 1;
@@ -185,13 +214,13 @@ function updatePoints(pointsState) {
 
     } else {
         points = -1;
-        if (time <= 20) {
+        if (time <= 10) {
             points = points * 1;
-        } else if (time <= 40 && time > 20) {
+        } else if (time <= 20 && time > 10) {
             points = points * 2;
-        } else if (time <= 60 && time > 40) {
+        } else if (time <=30 && time > 20) {
             points = points * 3;
-        } else if (time <= 80 && time > 60) {
+        } else if (time <= 40 && time > 30) {
             points = points * 4;
         } else {
             points = points * 5;
@@ -207,12 +236,21 @@ function updatePoints(pointsState) {
 function updateProgress() {
     switch (hits) {
         case 1:
-            document.getElementById("progressBar").style.width = "33%";
+            document.getElementById("progressBar").style.width = "16%";
             break;
         case 2:
-            document.getElementById("progressBar").style.width = "66%";
+            document.getElementById("progressBar").style.width = "32%";
             break;  
         case 3:
+            document.getElementById("progressBar").style.width = "50%";
+            break;
+        case 4:
+            document.getElementById("progressBar").style.width = "66%";
+            break;
+        case 5:
+            document.getElementById("progressBar").style.width = "82%";
+            break;  
+        case 6:
             document.getElementById("progressBar").style.width = "100%";
             break;
         default:
@@ -256,6 +294,7 @@ function setDrags(characters){
         img.src = character.dragSrc;
         img.width = "200";
         img.height = "200";
+        document.getElementById("dragBox" + i).innerHTML = "";
         document.getElementById("dragBox" + i).appendChild(img);
         i++;
     });
@@ -276,11 +315,14 @@ function setScenarios(characters){
 
 function drawScenarios(scenarios) {
     let i = 1;
+    let canvas = document.querySelectorAll("canvas");
+    let names = document.querySelectorAll(".name");
     scenarios.forEach(scenario => {
-        let canvas = document.getElementById("dropBox" + i);
-        let ctx = canvas.getContext("2d");
-        canvas.id = "c" + scenario.id;
-        document.getElementById("s" + i).id = "sc" + scenario.id;
+        let ctx = canvas[i-1].getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas[i-1].id = "c" + scenario.id;
+        names[i-1].innerHTML = "";
+        names[i-1].id = "sc" + scenario.id;
         
         let img= new Image()
         img.src= scenario.dropSrc;
@@ -290,6 +332,34 @@ function drawScenarios(scenarios) {
         };
         i++;
     });
+}
+
+function checkTime() {
+    if (localStorage.easyTime) {
+        if (localStorage.easyTime > time) {
+            localStorage.easyTime = time;
+        } 
+    } else {
+        localStorage.easyTime = time;
+    }
+}
+
+function checkPoints() {
+    if (localStorage.easyPoints) {
+        if (localStorage.easyPoints > pointsSum) {
+            localStorage.easyPoints = pointsSum;
+        } 
+    } else {
+        localStorage.easyPoints = pointsSum;
+    }
+}
+
+function win() {
+    checkTime();
+    checkPoints();
+    setTimeout(function(){
+        window.location.href = "./loadwin.html";
+    }, 5000);
 }
 
 window.addEventListener('load', start, false);
