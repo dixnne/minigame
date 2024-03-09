@@ -2,9 +2,17 @@ const canvas = document.getElementById("fallingLeavesCanvas");
 const ctx = canvas.getContext("2d");
 const leaves = [];
 const numLeaves = 100;
+let stats = [];
+let playerStats = {};
+let time = 0;
+let easyTime = mediumTime = hardTime = 0;
 
 document.getElementById("menu").addEventListener("click", () => {
     window.location.href = "./index.html";
+});
+
+document.getElementById("again").addEventListener("click", () => {
+    window.location.href = "./levels.html";
 });
 
 document.getElementById("download").addEventListener("click", () => {
@@ -22,31 +30,81 @@ document.getElementById("download").addEventListener("click", () => {
     aDownloadLink.click();
 });
 
+if (localStorage.stats) {
+  stats = JSON.parse(localStorage.stats);
+}
+
+for (let index = 0; index < stats.length; index++) {
+  const player = stats[index];
+  if (player.username == localStorage.name) {
+    playerStats = player;
+  }
+
+  if (playerStats == {}) {
+      playerStats = {
+          username: localStorage.name,
+          easyTime: 0,
+          easyPoints: 0,
+          mediumTime: 0,
+          mediumPoints: 0,
+          hardTime: 0,
+          hardPoints: 0,
+          lastTime: 0,
+          lastPoints: 0,
+          lastLevel: "",
+      }
+  }
+}
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-document.getElementById("text-container").innerText = "Felicidades, " + localStorage.name;
-switch (localStorage.lastLevel) {
+document.getElementById("text-container").innerText = "Felicidades, " + playerStats.username;
+switch (playerStats.lastLevel) {
     case "easy":
-        document.getElementById("time").innerText = localStorage.lastTime;
-        document.getElementById("levelTime").innerText = localStorage.easyTime;
-        document.getElementById("points").innerText = localStorage.lastPoints;
-        document.getElementById("levelPoints").innerText = localStorage.easyPoints;
+
+        time = playerStats.lastTime;
+        lastTime = Math.floor(time / 3600).toString().padStart(2, "0") + ":" + Math.floor((time % 3600) / 60).toString().padStart(2, "0") + ":" + Math.floor((time % 60)).toString().padStart(2, "0");
+        time = playerStats.easyTime;
+        easyTime = Math.floor(time / 3600).toString().padStart(2, "0") + ":" + Math.floor((time % 3600) / 60).toString().padStart(2, "0") + ":" + Math.floor((time % 60)).toString().padStart(2, "0");
+        
+        document.getElementById("time").innerText = lastTime;
+        document.getElementById("levelTime").innerText = easyTime;
+        document.getElementById("points").innerText = playerStats.lastPoints;
+        document.getElementById("levelPoints").innerText = playerStats.easyPoints;
         document.getElementById("level").innerText = "fácil";
+
         break;
     case "medium":
-        document.getElementById("time").innerText = localStorage.lastTime;
-        document.getElementById("levelTime").innerText = localStorage.easyTime;
-        document.getElementById("points").innerText = localStorage.lastPoints;
-        document.getElementById("levelPoints").innerText = localStorage.easyPoints;
+
+
+        time = playerStats.lastTime;
+        lastTime = Math.floor(time / 3600).toString().padStart(2, "0") + ":" + Math.floor((time % 3600) / 60).toString().padStart(2, "0") + ":" + Math.floor((time % 60)).toString().padStart(2, "0");
+        time = playerStats.mediumTime;
+        mediumTime = Math.floor(time / 3600).toString().padStart(2, "0") + ":" + Math.floor((time % 3600) / 60).toString().padStart(2, "0") + ":" + Math.floor((time % 60)).toString().padStart(2, "0");
+
+        document.getElementById("time").innerText = lastTime;
+        document.getElementById("levelTime").innerText = mediumTime;
+        document.getElementById("points").innerText = playerStats.lastPoints;
+        document.getElementById("levelPoints").innerText = playerStats.mediumPoints;
         document.getElementById("level").innerText = "medio";
+
         break;
+
     case "hard":
-        document.getElementById("time").innerText = localStorage.lastTime;
-        document.getElementById("levelTime").innerText = localStorage.easyTime;
-        document.getElementById("points").innerText = localStorage.lastPoints;
-        document.getElementById("levelPoints").innerText = localStorage.easyPoints;
+
+        time = playerStats.lastTime;
+        lastTime = Math.floor(time / 3600).toString().padStart(2, "0") + ":" + Math.floor((time % 3600) / 60).toString().padStart(2, "0") + ":" + Math.floor((time % 60)).toString().padStart(2, "0");
+        time = playerStats.hardTime;
+        hardTime = Math.floor(time / 3600).toString().padStart(2, "0") + ":" + Math.floor((time % 3600) / 60).toString().padStart(2, "0") + ":" + Math.floor((time % 60)).toString().padStart(2, "0");
+
+        document.getElementById("time").innerText = lastTime;
+        document.getElementById("levelTime").innerText = hardTime;
+        document.getElementById("points").innerText = playerStats.lastPoints;
+        document.getElementById("levelPoints").innerText = playerStats.hardPoints;
         document.getElementById("level").innerText = "difícil";
+
         break;
+
     default:
         break;
 }

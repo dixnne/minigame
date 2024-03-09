@@ -8,10 +8,9 @@ let pointsSum = 0;
 let hits = 0;
 
 class Drop{
-    constructor(id, character, audio, dropSrc){
+    constructor(id, character, dropSrc){
         this.id = id;
         this.character = character;
-        this.audio = audio;
         this.dropSrc = dropSrc;
     }
 }
@@ -43,20 +42,20 @@ let drops = [
 ];
 
 let drags = [
-    new Drag(0, "Thorfinn", "../assets/audios/", "./images/hard/pic1.png"),
-    new Drag(1, "Yu", "../assets/audios/",  "./images/hard/pic2.jpg"),
-    new Drag(2, "Maka", "../assets/audios/", "./images/hard/pic3.webp"),
-    new Drag(3, "Guts", "../assets/audios/", "./images/hard/pic4.png"),
-    new Drag(4, "Alucard", "../assets/audios/", "./images/hard/pic5.jpg"),
-    new Drag(5, "Hei", "../assets/audios/", "./images/hard/pic6.jpeg"),
-    new Drag(6, "Durham", "../assets/audios/", "./images/hard/pic7.webp"),
-    new Drag(7, "Isao", "../assets/audios/", "./images/hard/pic8.webp"),
-    new Drag(8, "Shorter", "../assets/audios/", "./images/hard/pic9.jpg"),
-    new Drag(9, "Kure Raian", "../assets/audios/", "./images/hard/pic10.jpg"),
-    new Drag(10, "Hidenori", "../assets/audios/", "./images/hard/pic11.webp"),
-    new Drag(11, "Death the kid", "../assets/audios/", "./images/hard/pic12.jpg"),
-    new Drag(12, "Shura", "../assets/audios/", "./images/hard/pic13.jpg"),
-    new Drag(13, "Lian", "../assets/audios/", "./images/medium/picla.webp")
+    new Drag(0, "Thorfinn", "./assets/audios/", "./images/hard/pic1.png"),
+    new Drag(1, "Yu", "./assets/audios/",  "./images/hard/pic2.jpg"),
+    new Drag(2, "Maka", "./assets/audios/", "./images/hard/pic3.webp"),
+    new Drag(3, "Guts", "./assets/audios/", "./images/hard/pic4.png"),
+    new Drag(4, "Alucard", "./assets/audios/", "./images/hard/pic5.jpg"),
+    new Drag(5, "Hei", "./assets/audios/", "./images/hard/pic6.jpeg"),
+    new Drag(6, "Durham", "./assets/audios/", "./images/hard/pic7.webp"),
+    new Drag(7, "Isao", "./assets/audios/", "./images/hard/pic8.webp"),
+    new Drag(8, "Shorter", "./assets/audios/", "./images/hard/pic9.jpg"),
+    new Drag(9, "Kure Raian", "./assets/audios/", "./images/hard/pic10.jpg"),
+    new Drag(10, "Hidenori", "./assets/audios/", "./images/hard/pic11.webp"),
+    new Drag(11, "Death the kid", "./assets/audios/", "./images/hard/pic12.jpg"),
+    new Drag(12, "Shura", "./assets/audios/", "./images/hard/pic13.jpg"),
+    new Drag(13, "Lian", "./assets/audios/", "./images/medium/picla.webp")
 ];
 
 let characters = [];
@@ -90,6 +89,52 @@ function start() {
     document.getElementById("points").innerHTML = 0;
     document.getElementById("name").innerHTML = localStorage.name;
     document.getElementById("progressBar").style.width = "0%";
+
+    if (localStorage.stats) {
+        stats = JSON.parse(localStorage.stats);
+    } else {
+        stats = [
+            {
+                username: localStorage.name,
+                hardTime: 0,
+                hardPoints: 0,
+                mediumTime: 0,
+                mediumPoints: 0,
+                hardTime: 0,
+                hardPoints: 0,
+                lastTime: 0,
+                lastPoints: 0,
+                lastLevel: "",
+            }
+        ]
+    }
+
+    for (let index = 0; index < stats.length; index++) {
+        const player = stats[index];
+        if (player.username == localStorage.name) {
+            playerStats = player;
+            playerIndex = index;
+        } else {
+            playerIndex = index;
+        }
+    }
+
+    if (playerStats == "") {
+        playerStats = {
+            username: localStorage.name,
+            hardTime: 0,
+            hardPoints: 0,
+            mediumTime: 0,
+            mediumPoints: 0,
+            hardTime: 0,
+            hardPoints: 0,
+            lastTime: 0,
+            lastPoints: 0,
+            lastLevel: "",
+        }
+        playerIndex += 1;
+    }
+
     shuffle(drags);
     characters = drags.slice(0,3);
     drags = drags.slice(3,drags.length);
@@ -157,36 +202,53 @@ function dropping(e) {
                     let character = characters[index];
                     if (element.id == character.id) {
                         let phrase = new Audio(character.audio);
-                        phrase.play();
                         let cname = character.character;
-                        document.getElementById("s" + e.target.id).innerHTML = cname;
-                        if (hits == 3) {
-                            setTimeout(function(){
-                                characters = drags.slice(0,3);
-                                setDrags(characters);
-                                scenarios = setScenarios(characters);
-                                shuffle(scenarios);
-                                drawScenarios(scenarios);
-                                document.querySelector("#dragBox1 > img").addEventListener('dragstart', dragging, false);
-                                document.querySelector("#dragBox2 > img").addEventListener('dragstart', dragging, false);
-                                document.querySelector("#dragBox3 > img").addEventListener('dragstart', dragging, false);
-                                document.querySelector("#dragBox1 > img").addEventListener('dragend', dragEnded, false);
-                                document.querySelector("#dragBox2 > img").addEventListener('dragend', dragEnded, false);
-                                document.querySelector("#dragBox3 > img").addEventListener('dragend', dragEnded, false);
-
-                                canvas = document.querySelectorAll("#dropsSection > canvas");
-                                for (let index = 0; index < canvas.length; index++) {
-                                    drop[index] = canvas[index];
-                                    ctx[index] = drop[index].getContext('2d');
-                                    drop[index].addEventListener('dragenter', dragEnter, false); 
-                                    drop[index].addEventListener('dragover', dragOver, false);
-                                    drop[index].addEventListener('drop', dropping, false);
-                                }
-                            }, 5000);
-
-                        } else if (hits >= 6) {
-                            win();
-                        }
+                        phrase.play();
+                        phrase.addEventListener("ended", () => {
+                            if ('speechSynthesis' in window) {
+                                // Speech Synthesis supported 
+                                var msg = new SpeechSynthesisUtterance();
+                                document.getElementById("s" + e.target.id).innerHTML = cname;
+                                msg.voice = speechSynthesis.getVoices().filter(function (voice) { return voice.name === "Google 日本語"; })[0];
+                                msg.volume = 1;
+                                msg.rate = 1;
+                                msg.pitch = 1;
+                                msg.lang = "ja-JP";
+                                msg.text = cname;
+                                window.speechSynthesis.speak(msg);
+                            }else{
+                                 // Speech Synthesis Not Supported 
+                                console.log("Sorry, your browser doesn't support text to speech!");
+                            }
+                            if (hits == 3) {
+                                setTimeout(function(){
+                                    document.getElementById("dropsSection").innerHTML = '<canvas id="dropBox1" height="250px" width="250px"></canvas><canvas id="dropBox2" height="250px" width="250px"></canvas><canvas id="dropBox3" height="250px" width="250px"></canvas>';
+                                    characters = drags.slice(0,3);
+                                    setDrags(characters);
+                                    scenarios = setScenarios(characters);
+                                    shuffle(scenarios);
+                                    drawScenarios(scenarios);
+                                    document.querySelector("#dragBox1 > img").addEventListener('dragstart', dragging, false);
+                                    document.querySelector("#dragBox2 > img").addEventListener('dragstart', dragging, false);
+                                    document.querySelector("#dragBox3 > img").addEventListener('dragstart', dragging, false);
+                                    document.querySelector("#dragBox1 > img").addEventListener('dragend', dragEnded, false);
+                                    document.querySelector("#dragBox2 > img").addEventListener('dragend', dragEnded, false);
+                                    document.querySelector("#dragBox3 > img").addEventListener('dragend', dragEnded, false);
+    
+                                    canvas = document.querySelectorAll("#dropsSection > canvas");
+                                    for (let index = 0; index < canvas.length; index++) {
+                                        drop[index] = canvas[index];
+                                        ctx[index] = drop[index].getContext('2d');
+                                        drop[index].addEventListener('dragenter', dragEnter, false); 
+                                        drop[index].addEventListener('dragover', dragOver, false);
+                                        drop[index].addEventListener('drop', dropping, false);
+                                    }
+                                }, 5000);
+    
+                            } else if (hits >= 6) {
+                                win();
+                            }
+                        });
                     }
                 }
             }
@@ -265,9 +327,9 @@ function startStopwatch() {
         clearInterval(interval);
     }
     interval = setInterval(() => { 
-        time += 1
+        time += 1;
         display.innerHTML = 
-          Math.floor(time / 3600).toString().padStart(2, "0") + ":" + Math.floor((time % 3600) / 60).toString().padStart(2, "0") + ":" + Math.floor((time % 60)).toString().padStart(2, "0")
+          Math.floor(time / 3600).toString().padStart(2, "0") + ":" + Math.floor((time % 3600) / 60).toString().padStart(2, "0") + ":" + Math.floor((time % 60)).toString().padStart(2, "0");
     }, 1000);
 }
 
@@ -293,7 +355,6 @@ function setDrags(characters){
         img = new Image();
         img.id = character.id;
         img.src = character.dragSrc;
-        img.width = "200";
         img.height = "200";
         document.getElementById("dragBox" + i).innerHTML = "";
         document.getElementById("dragBox" + i).appendChild(img);
@@ -327,44 +388,42 @@ function drawScenarios(scenarios) {
         
         let img= new Image()
         img.src= scenario.dropSrc;
-
         img.onload = () => {
-            ctx.drawImage(img,0,0,250, 250);
+            if (img.height > img.width) {
+                ctx.drawImage(img, 0, (img.height - img.width)/2, img.width, img.width, 0, 0, 250, 250);
+            } else {
+                ctx.drawImage(img, (img.width - img.height)/2, 0, img.height, img.height, 0, 0, 250, 250);
+            }
         };
         i++;
     });
 }
 
 function checkTime() {
-    if (localStorage.hardTime) {
-        if (localStorage.hardTime > time) {
-            localStorage.hardTime = time;
-        } 
-    } else {
-        localStorage.hardTime = time;
-    }
-    localStorage.lastTime = time;
+    if (playerStats.hardTime > time || playerStats.hardTime == 0) {
+        playerStats.hardTime = time;
+    } 
+    playerStats.lastTime = time;
 }
 
 function checkPoints() {
-    if (localStorage.hardPoints) {
-        if (localStorage.hardPoints < pointsSum) {
-            localStorage.hardPoints = pointsSum;
-        } 
-    } else {
-        localStorage.hardPoints = pointsSum;
-    }
-    localStorage.lastPoints = pointsSum;
+    if (playerStats.hardPoints < pointsSum) {
+        playerStats.hardPoints = pointsSum;
+    } 
+    playerStats.lastPoints = pointsSum;
 }
 
 function win() {
     checkTime();
     checkPoints();
-    localStorage.lastLevel = "hard";
+    playerStats.lastLevel = "hard";
+    stats[playerIndex] = playerStats;
+    localStorage.stats = JSON.stringify(stats);
     setTimeout(function(){
         window.location.href = "./loadwin.html";
     }, 5000);
 }
 
 window.addEventListener('load', start, false);
+
 

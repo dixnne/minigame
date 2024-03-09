@@ -8,10 +8,9 @@ let pointsSum = 0;
 let hits = 0;
 
 class Drop{
-    constructor(id, character, audio, dropSrc){
+    constructor(id, character, dropSrc){
         this.id = id;
         this.character = character;
-        this.audio = audio;
         this.dropSrc = dropSrc;
     }
 }
@@ -26,37 +25,39 @@ class Drag{
 }
 
 let drops = [
-    new Drop(0, "Edward", "./images/medium/pic1.2.webp"),
-    new Drop(1, "koro-sensei", "./images/medium/pic2.2.jpg"),
-    new Drop(2, "Gon", "./images/medium/pic3.2.webp"),
-    new Drop(3, "Kaneki", "./images/medium/pic4.2.webp"),
-    new Drop(4, "Hinata", "./images/medium/pic5.2.jpeg"),
-    new Drop(5, "Gojo", "./images/medium/pic6.1.webp"),
-    new Drop(6, "Horu", "./images/medium/pic7.2.jpg"),
-    new Drop(7, "Bocchi", "./images/medium/pic8.2.jpg"),
-    new Drop(8, "Aisaka", "./images/medium/pic9.2.jpg"),
-    new Drop(9, "Kirito", "./images/medium/pic10.2.jpg"),
-    new Drop(10, "Himura", "./images/medium/pic11.2.jpg"),
-    new Drop(11, "Pochita", "./images/medium/pic12.2.jpeg"),
-    new Drop(12, "Kaori", "./images/medium/pic13.2.webp"),
-    new Drop(13, "Mitsuha", "./images/medium/pic14.2.webp")
+    new Drop(0, "Edward", "./images/medium/edward-bg.jpg"),
+    new Drop(1, "koro-sensei", "./images/medium/koro-bg.webp"),
+    new Drop(2, "Gon", "./images/medium/gon-bg.webp"),
+    new Drop(3, "Kaneki", "./images/medium/kaneki-bg.jpeg"),
+    new Drop(4, "Hinata", "./images/medium/hinata-bg.jpeg"),
+    new Drop(5, "Gojo", "./images/medium/gojo-bg.jpeg"),
+    new Drop(6, "Horu", "./images/medium/hori-bg.jpg"),
+    new Drop(7, "Bocchi", "./images/medium/bocchi-bg.avif"),
+    new Drop(8, "Aisaka", "./images/medium/aisaka-bg.jpeg"),
+    new Drop(9, "Kirito", "./images/medium/kirito-bg.png"),
+    new Drop(10, "Himura", "./images/medium/himura-bg.jpeg"),
+    new Drop(11, "Pochita", "./images/medium/pochita-bg.jpg_large"),
+    new Drop(12, "Kaori", "./images/medium/kaori-bg.jpeg"),
+    new Drop(13, "Mitsuha", "./images/medium/mitsuha-bg.avif"),
+    new Drop(14, "Sakura", "./images/medium/sakura-bg.png")
 ];
 
 let drags = [
-    new Drag(0, "Edward", "../assets/medium/son1.mp3", "./images/medium/pic1.png"),
-    new Drag(1, "Koro-sensei", "../assets/medium/son2.mp3",  "./images/medium/pic2.png"),
-    new Drag(2, "Gon", "../assets/medium/son3.mp3", "./images/medium/pic3.png"),
-    new Drag(3, "Kaneki", "../assets/medium/son4.mp3", "./images/medium/pic4.png"),
-    new Drag(4, "Hinata", "../assets/medium/son5.mp3", "./images/medium/pic5.png"),
-    new Drag(5, "Gojo", "../assets/medium/son6.mp3", "./images/medium/pic6.png"),
-    new Drag(6, "Horu", "../assets/medium/son7.mp3", "./images/medium/pic7.png"),
-    new Drag(7, "Bocchi", "../assets/medium/son8.mp3", "./images/medium/pic8.webp"),
-    new Drag(8, "Aisaka", "../assets/medium/son9.mp3", "./images/medium/pic9.jpg"),
-    new Drag(9, "Kirito", "../assets/medium/son10.mp3", "./images/medium/pic10.jpg"),
-    new Drag(10, "Himura", "../assets/medium/son11.mp3", "./images/medium/pic11.webp"),
-    new Drag(11, "Pochita", "../assets/medium/son12.mp3", "./images/medium/pic12.jpeg"),
-    new Drag(12, "Kaori", "../assets/medium/son13.mp3", "./images/medium/pic13.webp"),
-    new Drag(13, "Mitsuha", "../assets/medium/son14.mp3", "./images/medium/pic14.webp")
+    new Drag(0, "Edward", "./assets/medium/son1.mp3", "./images/medium/edward.webp"),
+    new Drag(1, "Koro-sensei", "./assets/medium/son2.mp3",  "./images/medium/pic2.png"),
+    new Drag(2, "Gon", "./assets/medium/son3.mp3", "./images/medium/pic3.png"),
+    new Drag(3, "Kaneki", "./assets/medium/son4.mp3", "./images/medium/pic4.png"),
+    new Drag(4, "Hinata", "./assets/medium/son5.mp3", "./images/medium/hinata.png"),
+    new Drag(5, "Gojo", "./assets/medium/son6.mp3", "./images/medium/gojo.png"),
+    new Drag(6, "Horu", "./assets/medium/son7.mp3", "./images/medium/hori.webp"),
+    new Drag(7, "Bocchi", "./assets/medium/son8.mp3", "./images/medium/bocchi.png"),
+    new Drag(8, "Aisaka", "./assets/medium/son9.mp3", "./images/medium/aisaka.png"),
+    new Drag(9, "Kirito", "./assets/medium/son10.mp3", "./images/medium/kirito.png"),
+    new Drag(10, "Himura", "./assets/medium/son11.mp3", "./images/medium/himura.webp"),
+    new Drag(11, "Pochita", "./assets/medium/son12.mp3", "./images/medium/pochita.png"),
+    new Drag(12, "Kaori", "./assets/medium/son13.mp3", "./images/medium/kaori.png"),
+    new Drag(13, "Mitsuha", "./assets/medium/son14.mp3", "./images/medium/mitsuha.png"),
+    new Drop(14, "Sakura", "./assets/medium/son14.mp3", "./images/medium/sakura.png")
 ];
 
 let characters = [];
@@ -90,6 +91,52 @@ function start() {
     document.getElementById("points").innerHTML = 0;
     document.getElementById("name").innerHTML = localStorage.name;
     document.getElementById("progressBar").style.width = "0%";
+
+    if (localStorage.stats) {
+        stats = JSON.parse(localStorage.stats);
+    } else {
+        stats = [
+            {
+                username: localStorage.name,
+                mediumTime: 0,
+                mediumPoints: 0,
+                mediumTime: 0,
+                mediumPoints: 0,
+                hardTime: 0,
+                hardPoints: 0,
+                lastTime: 0,
+                lastPoints: 0,
+                lastLevel: "",
+            }
+        ]
+    }
+
+    for (let index = 0; index < stats.length; index++) {
+        const player = stats[index];
+        if (player.username == localStorage.name) {
+            playerStats = player;
+            playerIndex = index;
+        } else {
+            playerIndex = index;
+        }
+    }
+
+    if (playerStats == "") {
+        playerStats = {
+            username: localStorage.name,
+            mediumTime: 0,
+            mediumPoints: 0,
+            mediumTime: 0,
+            mediumPoints: 0,
+            hardTime: 0,
+            hardPoints: 0,
+            lastTime: 0,
+            lastPoints: 0,
+            lastLevel: "",
+        }
+        playerIndex += 1;
+    }
+
     shuffle(drags);
     characters = drags.slice(0,3);
     drags = drags.slice(3,drags.length);
@@ -157,36 +204,53 @@ function dropping(e) {
                     let character = characters[index];
                     if (element.id == character.id) {
                         let phrase = new Audio(character.audio);
-                        phrase.play();
                         let cname = character.character;
-                        document.getElementById("s" + e.target.id).innerHTML = cname;
-                        if (hits == 3) {
-                            setTimeout(function(){
-                                characters = drags.slice(0,3);
-                                setDrags(characters);
-                                scenarios = setScenarios(characters);
-                                shuffle(scenarios);
-                                drawScenarios(scenarios);
-                                document.querySelector("#dragBox1 > img").addEventListener('dragstart', dragging, false);
-                                document.querySelector("#dragBox2 > img").addEventListener('dragstart', dragging, false);
-                                document.querySelector("#dragBox3 > img").addEventListener('dragstart', dragging, false);
-                                document.querySelector("#dragBox1 > img").addEventListener('dragend', dragEnded, false);
-                                document.querySelector("#dragBox2 > img").addEventListener('dragend', dragEnded, false);
-                                document.querySelector("#dragBox3 > img").addEventListener('dragend', dragEnded, false);
-
-                                canvas = document.querySelectorAll("#dropsSection > canvas");
-                                for (let index = 0; index < canvas.length; index++) {
-                                    drop[index] = canvas[index];
-                                    ctx[index] = drop[index].getContext('2d');
-                                    drop[index].addEventListener('dragenter', dragEnter, false); 
-                                    drop[index].addEventListener('dragover', dragOver, false);
-                                    drop[index].addEventListener('drop', dropping, false);
-                                }
-                            }, 5000);
-
-                        } else if (hits >= 6) {
-                            win();
-                        }
+                        phrase.play();
+                        phrase.addEventListener("ended", () => {
+                            if ('speechSynthesis' in window) {
+                                // Speech Synthesis supported 
+                                var msg = new SpeechSynthesisUtterance();
+                                document.getElementById("s" + e.target.id).innerHTML = cname;
+                                msg.voice = speechSynthesis.getVoices().filter(function (voice) { return voice.name === "Google 日本語"; })[0];
+                                msg.volume = 1;
+                                msg.rate = 1;
+                                msg.pitch = 1;
+                                msg.lang = "ja-JP";
+                                msg.text = cname;
+                                window.speechSynthesis.speak(msg);
+                            }else{
+                                 // Speech Synthesis Not Supported 
+                                console.log("Sorry, your browser doesn't support text to speech!");
+                            }
+                            if (hits == 3) {
+                                setTimeout(function(){
+                                    document.getElementById("dropsSection").innerHTML = '<canvas id="dropBox1" height="250px" width="250px"></canvas><canvas id="dropBox2" height="250px" width="250px"></canvas><canvas id="dropBox3" height="250px" width="250px"></canvas>';
+                                    characters = drags.slice(0,3);
+                                    setDrags(characters);
+                                    scenarios = setScenarios(characters);
+                                    shuffle(scenarios);
+                                    drawScenarios(scenarios);
+                                    document.querySelector("#dragBox1 > img").addEventListener('dragstart', dragging, false);
+                                    document.querySelector("#dragBox2 > img").addEventListener('dragstart', dragging, false);
+                                    document.querySelector("#dragBox3 > img").addEventListener('dragstart', dragging, false);
+                                    document.querySelector("#dragBox1 > img").addEventListener('dragend', dragEnded, false);
+                                    document.querySelector("#dragBox2 > img").addEventListener('dragend', dragEnded, false);
+                                    document.querySelector("#dragBox3 > img").addEventListener('dragend', dragEnded, false);
+    
+                                    canvas = document.querySelectorAll("#dropsSection > canvas");
+                                    for (let index = 0; index < canvas.length; index++) {
+                                        drop[index] = canvas[index];
+                                        ctx[index] = drop[index].getContext('2d');
+                                        drop[index].addEventListener('dragenter', dragEnter, false); 
+                                        drop[index].addEventListener('dragover', dragOver, false);
+                                        drop[index].addEventListener('drop', dropping, false);
+                                    }
+                                }, 5000);
+    
+                            } else if (hits >= 6) {
+                                win();
+                            }
+                        });
                     }
                 }
             }
@@ -265,9 +329,9 @@ function startStopwatch() {
         clearInterval(interval);
     }
     interval = setInterval(() => { 
-        time += 1
+        time += 1;
         display.innerHTML = 
-          Math.floor(time / 3600).toString().padStart(2, "0") + ":" + Math.floor((time % 3600) / 60).toString().padStart(2, "0") + ":" + Math.floor((time % 60)).toString().padStart(2, "0")
+          Math.floor(time / 3600).toString().padStart(2, "0") + ":" + Math.floor((time % 3600) / 60).toString().padStart(2, "0") + ":" + Math.floor((time % 60)).toString().padStart(2, "0");
     }, 1000);
 }
 
@@ -293,7 +357,6 @@ function setDrags(characters){
         img = new Image();
         img.id = character.id;
         img.src = character.dragSrc;
-        img.width = "200";
         img.height = "200";
         document.getElementById("dragBox" + i).innerHTML = "";
         document.getElementById("dragBox" + i).appendChild(img);
@@ -327,44 +390,42 @@ function drawScenarios(scenarios) {
         
         let img= new Image()
         img.src= scenario.dropSrc;
-
         img.onload = () => {
-            ctx.drawImage(img,0,0,250, 250);
+            if (img.height > img.width) {
+                ctx.drawImage(img, 0, (img.height - img.width)/2, img.width, img.width, 0, 0, 250, 250);
+            } else {
+                ctx.drawImage(img, (img.width - img.height)/2, 0, img.height, img.height, 0, 0, 250, 250);
+            }
         };
         i++;
     });
 }
 
 function checkTime() {
-    if (localStorage.mediumTime) {
-        if (localStorage.mediumTime > time) {
-            localStorage.mediumTime = time;
-        } 
-    } else {
-        localStorage.mediumTime = time;
-    }
-    localStorage.lastTime = time;
+    if (playerStats.mediumTime > time || playerStats.mediumTime == 0) {
+        playerStats.mediumTime = time;
+    } 
+    playerStats.lastTime = time;
 }
 
 function checkPoints() {
-    if (localStorage.mediumPoints) {
-        if (localStorage.mediumPoints < pointsSum) {
-            localStorage.mediumPoints = pointsSum;
-        } 
-    } else {
-        localStorage.mediumPoints = pointsSum;
-    }
-    localStorage.lastPoints = pointsSum;
+    if (playerStats.mediumPoints < pointsSum) {
+        playerStats.mediumPoints = pointsSum;
+    } 
+    playerStats.lastPoints = pointsSum;
 }
 
 function win() {
     checkTime();
     checkPoints();
-    localStorage.lastLevel = "medium";
+    playerStats.lastLevel = "medium";
+    stats[playerIndex] = playerStats;
+    localStorage.stats = JSON.stringify(stats);
     setTimeout(function(){
         window.location.href = "./loadwin.html";
     }, 5000);
 }
 
 window.addEventListener('load', start, false);
+
 
