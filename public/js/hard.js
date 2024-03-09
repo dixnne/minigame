@@ -26,37 +26,37 @@ class Drag{
 }
 
 let drops = [
-    new Drop(0, "Pikachu", "../assets/audios/", "./images/easy/pokeball.png"),
-    new Drop(1, "Goku", "../assets/audios/",  "./images/easy/pokeball.png"),
-    new Drop(2, "Luffy", "../assets/audios/", "./images/easy/pokeball.png"),
-    new Drop(3, "Naruto", "../assets/audios/", "./images/easy/pokeball.png"),
-    new Drop(4, "Oliver", "../assets/audios/", "./images/easy/pokeball.png"),
-    new Drop(5, "Seiya", "../assets/audios/", "./images/easy/pokeball.png"),
-    new Drop(6, "Santana", "../assets/audios/", "./images/easy/pokeball.png"),
-    new Drop(7, "Anya", "../assets/audios/", "./images/easy/pokeball.png"),
-    new Drop(8, "Asuka", "../assets/audios/", "./images/easy/pokeball.png"),
-    new Drop(9, "Kira", "../assets/audios/", "./images/easy/pokeball.png"),
-    new Drop(10, "Sailor Moon", "../assets/audios/", "./images/easy/pokeball.png"),
-    new Drop(11, "Eren", "../assets/audios/", "./images/easy/pokeball.png"),
-    new Drop(12, "Nezuko", "../assets/audios/", "./images/easy/pokeball.png"),
-    new Drop(13, "Yugi", "../assets/audios/", "./images/easy/pokeball.png")
+    new Drop(0, "Pikachu", "../assets/audios/", "./images/hard/pic1.2.png"),
+    new Drop(1, "Lain", "../assets/audios/",  "./images/hard/pic2.2.jpg"),
+    new Drop(2, "Yu", "../assets/audios/", "./images/hard/pic3.2.jpg"),
+    new Drop(3, "Maka", "../assets/audios/", "./images/hard/pic4.2.jpg"),
+    new Drop(4, "Guts", "../assets/audios/", "./images/hard/pic5.2.jpg"),
+    new Drop(5, "Alucard", "../assets/audios/", "./images/hard/pic6.2.png"),
+    new Drop(6, "Hei", "../assets/audios/", "./images/hard/pic7.2.webp"),
+    new Drop(7, "Durham", "../assets/audios/", "./images/hard/pic8.2.webp"),
+    new Drop(8, "Isao", "../assets/audios/", "./images/hard/pic9.2.jpg"),
+    new Drop(9, "Shorter", "../assets/audios/", "./images/hard/pic10.2.jpg"),
+    new Drop(10, "Kure Raian", "../assets/audios/", "./images/hard/pic11.2.jpg"),
+    new Drop(11, "Hidenori", "../assets/audios/", "./images/hard/pic12.2.webp"),
+    new Drop(12, "Death the kid", "../assets/audios/", "./images/hard/pic13.2.jpg"),
+    new Drop(13, "Shura", "../assets/audios/", "./images/hard/pokeball.png")
 ];
 
 let drags = [
-    new Drag(0, "Pikachu", "../assets/audios/", "./images/easy/pika.png"),
-    new Drag(1, "Goku", "../assets/audios/",  "./images/easy/pika.png"),
-    new Drag(2, "Luffy", "../assets/audios/", "./images/easy/pika.png"),
-    new Drag(3, "Naruto", "../assets/audios/", "./images/easy/pika.png"),
-    new Drag(4, "Oliver", "../assets/audios/", "./images/easy/pika.png"),
-    new Drag(5, "Seiya", "../assets/audios/", "./images/easy/pika.png"),
-    new Drag(6, "Santana", "../assets/audios/", "./images/easy/pika.png"),
-    new Drag(7, "Anya", "../assets/audios/", "./images/easy/pika.png"),
-    new Drag(8, "Asuka", "../assets/audios/", "./images/easy/pika.png"),
-    new Drag(9, "Kira", "../assets/audios/", "./images/easy/pika.png"),
-    new Drag(10, "Sailor Moon", "../assets/audios/", "./images/easy/pika.png"),
-    new Drag(11, "Eren", "../assets/audios/", "./images/easy/pika.png"),
-    new Drag(12, "Nezuko", "../assets/audios/", "./images/easy/pika.png"),
-    new Drag(13, "Yugi", "../assets/audios/", "./images/easy/pika.png")
+    new Drag(0, "Pikachu", "../assets/audios/", "./images/hard/pic1.png"),
+    new Drag(1, "Lain", "../assets/audios/",  "./images/hard/pic2.jpg"),
+    new Drag(2, "Yu", "../assets/audios/", "./images/hard/pic3.webp"),
+    new Drag(3, "Maka", "../assets/audios/", "./images/hard/pic4.png"),
+    new Drag(4, "Guts", "../assets/audios/", "./images/hard/pic5.jpg"),
+    new Drag(5, "Alucard", "../assets/audios/", "./images/hard/pic6.jpeg"),
+    new Drag(6, "Hei", "../assets/audios/", "./images/hard/pic7.webp"),
+    new Drag(7, "Durham", "../assets/audios/", "./images/hard/pic8.webp"),
+    new Drag(8, "Isao", "../assets/audios/", "./images/hard/pic9.jpg"),
+    new Drag(9, "Shorter", "../assets/audios/", "./images/hard/pic10.jpg"),
+    new Drag(10, "Kure Raian", "../assets/audios/", "./images/hard/pic11.webp"),
+    new Drag(11, "Hidenori", "../assets/audios/", "./images/hard/pic12.jpg"),
+    new Drag(12, "Death the kid", "../assets/audios/", "./images/hard/pic13.jpg"),
+    new Drag(13, "Shura", "../assets/audios/", "./images/easy/pika.png")
 ];
 
 let characters = [];
