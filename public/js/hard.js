@@ -343,6 +343,7 @@ function checkTime() {
     } else {
         localStorage.hardTime = time;
     }
+    localStorage.lastTime = time;
 }
 
 function checkPoints() {
@@ -353,6 +354,7 @@ function checkPoints() {
     } else {
         localStorage.hardPoints = pointsSum;
     }
+    localStorage.lastPoints = pointsSum;
 }
 
 function win() {
