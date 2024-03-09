@@ -43,20 +43,20 @@ let drops = [
 ];
 
 let drags = [
-    new Drag(0, "Edward", "../assets/audios/", "./images/medium/pic1.png"),
-    new Drag(1, "Koro-sensei", "../assets/audios/",  "./images/medium/pic2.png"),
-    new Drag(2, "Gon", "../assets/audios/", "./images/medium/pic3.png"),
-    new Drag(3, "Kaneki", "../assets/audios/", "./images/medium/pic4.png"),
-    new Drag(4, "Hinata", "../assets/audios/", "./images/medium/pic5.png"),
-    new Drag(5, "Gojo", "../assets/audios/", "./images/medium/pic6.png"),
-    new Drag(6, "Horu", "../assets/audios/", "./images/medium/pic7.png"),
-    new Drag(7, "Bocchi", "../assets/audios/", "./images/medium/pic8.webp"),
-    new Drag(8, "Aisaka", "../assets/audios/", "./images/medium/pic9.jpg"),
-    new Drag(9, "Kirito", "../assets/audios/", "./images/medium/pic10.jpg"),
-    new Drag(10, "Himura", "../assets/audios/", "./images/medium/pic11.webp"),
-    new Drag(11, "Pochita", "../assets/audios/", "./images/medium/pic12.jpeg"),
-    new Drag(12, "Kaori", "../assets/audios/", "./images/medium/pic13.webp"),
-    new Drag(13, "Mitsuha", "../assets/audios/", "./images/medium/pic14.webp")
+    new Drag(0, "Edward", "../assets/medium/son1.mp3", "./images/medium/pic1.png"),
+    new Drag(1, "Koro-sensei", "../assets/medium/son2.mp3",  "./images/medium/pic2.png"),
+    new Drag(2, "Gon", "../assets/medium/son3.mp3", "./images/medium/pic3.png"),
+    new Drag(3, "Kaneki", "../assets/medium/son4.mp3", "./images/medium/pic4.png"),
+    new Drag(4, "Hinata", "../assets/medium/son5.mp3", "./images/medium/pic5.png"),
+    new Drag(5, "Gojo", "../assets/medium/son6.mp3", "./images/medium/pic6.png"),
+    new Drag(6, "Horu", "../assets/medium/son7.mp3", "./images/medium/pic7.png"),
+    new Drag(7, "Bocchi", "../assets/medium/son8.mp3", "./images/medium/pic8.webp"),
+    new Drag(8, "Aisaka", "../assets/medium/son9.mp3", "./images/medium/pic9.jpg"),
+    new Drag(9, "Kirito", "../assets/medium/son10.mp3", "./images/medium/pic10.jpg"),
+    new Drag(10, "Himura", "../assets/medium/son11.mp3", "./images/medium/pic11.webp"),
+    new Drag(11, "Pochita", "../assets/medium/son12.mp3", "./images/medium/pic12.jpeg"),
+    new Drag(12, "Kaori", "../assets/medium/son13.mp3", "./images/medium/pic13.webp"),
+    new Drag(13, "Mitsuha", "../assets/medium/son14.mp3", "./images/medium/pic14.webp")
 ];
 
 let characters = [];
