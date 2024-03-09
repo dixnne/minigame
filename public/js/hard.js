@@ -39,7 +39,7 @@ let drops = [
     new Drop(10, "Kure Raian", "../assets/audios/", "./images/hard/pic11.2.jpg"),
     new Drop(11, "Hidenori", "../assets/audios/", "./images/hard/pic12.2.webp"),
     new Drop(12, "Death the kid", "../assets/audios/", "./images/hard/pic13.2.jpg"),
-    new Drop(13, "Shura", "../assets/audios/", "./images/hard/pokeball.png")
+    new Drop(13, "Shura", "../assets/audios/", "./images/medium/pic15.2.jpg")
 ];
 
 let drags = [
@@ -56,7 +56,7 @@ let drags = [
     new Drag(10, "Kure Raian", "../assets/audios/", "./images/hard/pic11.webp"),
     new Drag(11, "Hidenori", "../assets/audios/", "./images/hard/pic12.jpg"),
     new Drag(12, "Death the kid", "../assets/audios/", "./images/hard/pic13.jpg"),
-    new Drag(13, "Shura", "../assets/audios/", "./images/easy/pika.png")
+    new Drag(13, "Shura", "../assets/audios/", "./images/medium/pic15.jpg")
 ];
 
 let characters = [];
