@@ -9,6 +9,7 @@ let hits = 0;
 let stats = [];
 let playerStats = "";
 let playerIndex = 0;
+let audioWasPlaying = false;
 
 class Drop{
     constructor(id, character, dropSrc){
@@ -206,6 +207,10 @@ function dropping(e) {
                     if (element.id == character.id) {
                         let phrase = new Audio(character.audio);
                         let cname = character.character;
+                        if (!audio.paused) {
+                            audio.pause();
+                            audioWasPlaying = true;
+                        }
                         phrase.play();
                         phrase.addEventListener("ended", () => {
                             if ('speechSynthesis' in window) {
@@ -219,6 +224,9 @@ function dropping(e) {
                                 msg.lang = "ja-JP";
                                 msg.text = cname;
                                 window.speechSynthesis.speak(msg);
+                                msg.addEventListener("end", () => {
+                                    if (audioWasPlaying) audio.play();
+                                });
                             }else{
                                  // Speech Synthesis Not Supported 
                                 console.log("Sorry, your browser doesn't support text to speech!");

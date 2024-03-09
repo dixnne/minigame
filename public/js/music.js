@@ -48,3 +48,7 @@ stopButton.addEventListener('click', () => {
     audio.currentTime = 0;
     playPauseButton.innerHTML = play;
 });
+
+window.addEventListener("load", () => {
+    audio.play();
+});
