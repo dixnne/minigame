@@ -26,37 +26,37 @@ class Drag{
 }
 
 let drops = [
-    new Drop(0, "Pikachu", "../assets/audios/", "./images/medium/pic1.2.webp"),
-    new Drop(1, "Goku", "../assets/audios/",  "./images/medium/pic2.2.jpg"),
-    new Drop(2, "Luffy", "../assets/audios/", "./images/medium/pic3.2.webp"),
-    new Drop(3, "Naruto", "../assets/audios/", "./images/medium/pic4.2.webp"),
-    new Drop(4, "Oliver", "../assets/audios/", "./images/medium/pic5.2.jpeg"),
-    new Drop(5, "Seiya", "../assets/audios/", "./images/medium/pic6.1.webp"),
-    new Drop(6, "Santana", "../assets/audios/", "./images/medium/pic7.2.jpg"),
-    new Drop(7, "Anya", "../assets/audios/", "./images/medium/pic8.2.jpg"),
-    new Drop(8, "Asuka", "../assets/audios/", "./images/medium/pic9.2.jpg"),
-    new Drop(9, "Kira", "../assets/audios/", "./images/medium/pic10.2.jpg"),
-    new Drop(10, "Sailor Moon", "../assets/audios/", "./images/medium/pic11.2.jpg"),
-    new Drop(11, "Eren", "../assets/audios/", "./images/medium/pic12.2.jpeg"),
-    new Drop(12, "Nezuko", "../assets/audios/", "./images/medium/pic13.2.webp"),
-    new Drop(13, "Yugi", "../assets/audios/", "./images/medium/pic14.2.webp")
+    new Drop(0, "Edward", "./images/medium/pic1.2.webp"),
+    new Drop(1, "koro-sensei", "./images/medium/pic2.2.jpg"),
+    new Drop(2, "Gon", "./images/medium/pic3.2.webp"),
+    new Drop(3, "Kaneki", "./images/medium/pic4.2.webp"),
+    new Drop(4, "Hinata", "./images/medium/pic5.2.jpeg"),
+    new Drop(5, "Gojo", "./images/medium/pic6.1.webp"),
+    new Drop(6, "Horu", "./images/medium/pic7.2.jpg"),
+    new Drop(7, "Bocchi", "./images/medium/pic8.2.jpg"),
+    new Drop(8, "Aisaka", "./images/medium/pic9.2.jpg"),
+    new Drop(9, "Kirito", "./images/medium/pic10.2.jpg"),
+    new Drop(10, "Himura", "./images/medium/pic11.2.jpg"),
+    new Drop(11, "Pochita", "./images/medium/pic12.2.jpeg"),
+    new Drop(12, "Kaori", "./images/medium/pic13.2.webp"),
+    new Drop(13, "Mitsuha", "./images/medium/pic14.2.webp")
 ];
 
 let drags = [
-    new Drag(0, "Pikachu", "../assets/audios/", "./images/medium/pic1.png"),
-    new Drag(1, "Goku", "../assets/audios/",  "./images/medium/pic2.png"),
-    new Drag(2, "Luffy", "../assets/audios/", "./images/medium/pic3.png"),
-    new Drag(3, "Naruto", "../assets/audios/", "./images/medium/pic4.png"),
-    new Drag(4, "Oliver", "../assets/audios/", "./images/medium/pic5.png"),
-    new Drag(5, "Seiya", "../assets/audios/", "./images/medium/pic6.png"),
-    new Drag(6, "Santana", "../assets/audios/", "./images/medium/pic7.png"),
-    new Drag(7, "Anya", "../assets/audios/", "./images/medium/pic8.webp"),
-    new Drag(8, "Asuka", "../assets/audios/", "./images/medium/pic9.jpg"),
-    new Drag(9, "Kira", "../assets/audios/", "./images/medium/pic10.jpg"),
-    new Drag(10, "Sailor Moon", "../assets/audios/", "./images/medium/pic11.webp"),
-    new Drag(11, "Eren", "../assets/audios/", "./images/medium/pic12.jpeg"),
-    new Drag(12, "Nezuko", "../assets/audios/", "./images/medium/pic13.webp"),
-    new Drag(13, "Yugi", "../assets/audios/", "./images/medium/pic14.webp")
+    new Drag(0, "Edward", "../assets/audios/", "./images/medium/pic1.png"),
+    new Drag(1, "Koro-sensei", "../assets/audios/",  "./images/medium/pic2.png"),
+    new Drag(2, "Gon", "../assets/audios/", "./images/medium/pic3.png"),
+    new Drag(3, "Kaneki", "../assets/audios/", "./images/medium/pic4.png"),
+    new Drag(4, "Hinata", "../assets/audios/", "./images/medium/pic5.png"),
+    new Drag(5, "Gojo", "../assets/audios/", "./images/medium/pic6.png"),
+    new Drag(6, "Horu", "../assets/audios/", "./images/medium/pic7.png"),
+    new Drag(7, "Bocchi", "../assets/audios/", "./images/medium/pic8.webp"),
+    new Drag(8, "Aisaka", "../assets/audios/", "./images/medium/pic9.jpg"),
+    new Drag(9, "Kirito", "../assets/audios/", "./images/medium/pic10.jpg"),
+    new Drag(10, "Himura", "../assets/audios/", "./images/medium/pic11.webp"),
+    new Drag(11, "Pochita", "../assets/audios/", "./images/medium/pic12.jpeg"),
+    new Drag(12, "Kaori", "../assets/audios/", "./images/medium/pic13.webp"),
+    new Drag(13, "Mitsuha", "../assets/audios/", "./images/medium/pic14.webp")
 ];
 
 let characters = [];
