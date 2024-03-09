@@ -26,7 +26,7 @@ class Drag{
 }
 
 let drops = [
-    new Drop(0, "Pikachu", "../assets/audios/", "./images/hard/pic1.2.png"),
+    new Drop(0, "Thorfinn", "../assets/audios/", "./images/hard/pic1.2.png"),
     new Drop(1, "Lain", "../assets/audios/",  "./images/hard/pic2.2.jpg"),
     new Drop(2, "Yu", "../assets/audios/", "./images/hard/pic3.2.jpg"),
     new Drop(3, "Maka", "../assets/audios/", "./images/hard/pic4.2.jpg"),
@@ -43,7 +43,7 @@ let drops = [
 ];
 
 let drags = [
-    new Drag(0, "Pikachu", "../assets/audios/", "./images/hard/pic1.png"),
+    new Drag(0, "Thorfinn", "../assets/audios/", "./images/hard/pic1.png"),
     new Drag(1, "Lain", "../assets/audios/",  "./images/hard/pic2.jpg"),
     new Drag(2, "Yu", "../assets/audios/", "./images/hard/pic3.webp"),
     new Drag(3, "Maka", "../assets/audios/", "./images/hard/pic4.png"),
