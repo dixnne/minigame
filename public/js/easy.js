@@ -26,20 +26,20 @@ class Drag{
 }
 
 let drops = [
-    new Drop(0, "Pikachu", "../assets/audios/", "./images/easy/pic1.2.png"),
-    new Drop(1, "Goku", "../assets/audios/",  "./images/easy/pic2.2.webp"),
-    new Drop(2, "Luffy", "../assets/audios/", "./images/easy/pic3.2.png"),
-    new Drop(3, "Naruto", "../assets/audios/", "./images/easy/pic4.2.jpg"),
-    new Drop(4, "Oliver", "../assets/audios/", "./images/easy/pic5.2.webp"),
-    new Drop(5, "Seiya", "../assets/audios/", "./images/easy/pic6.2.jpg"),
-    new Drop(6, "Santana", "../assets/audios/", "./images/easy/pic7.2.webp"),
-    new Drop(7, "Anya", "../assets/audios/", "./images/easy/pic8.2.jpeg"),
-    new Drop(8, "Asuka", "../assets/audios/", "./images/easy/pic9.2.jpg"),
-    new Drop(9, "Kira", "../assets/audios/", "./images/easy/pic10.2.jpg"),
-    new Drop(10, "Sailor Moon", "../assets/audios/", "./images/easy/pic11.2.jpg"),
-    new Drop(11, "Eren", "../assets/audios/", "./images/easy/pic12.2.png"),
-    new Drop(12, "Nezuko", "../assets/audios/", "./images/easy/pic13.2.jpg"),
-    new Drop(13, "Yugi", "../assets/audios/", "./images/easy/pic14.2.jpg")
+    new Drop(0, "Pikachu", "./images/easy/pic1.2.png"),
+    new Drop(1, "Goku", "./images/easy/pic2.2.webp"),
+    new Drop(2, "Luffy", "./images/easy/pic3.2.png"),
+    new Drop(3, "Naruto", "./images/easy/pic4.2.jpg"),
+    new Drop(4, "Oliver", "./images/easy/pic5.2.webp"),
+    new Drop(5, "Seiya", "./images/easy/pic6.2.jpg"),
+    new Drop(6, "Santana", "./images/easy/pic7.2.webp"),
+    new Drop(7, "Anya", "./images/easy/pic8.2.jpeg"),
+    new Drop(8, "Asuka", "./images/easy/pic9.2.jpg"),
+    new Drop(9, "Kira", "./images/easy/pic10.2.jpg"),
+    new Drop(10, "Sailor Moon", "./images/easy/pic11.2.jpg"),
+    new Drop(11, "Eren",  "./images/easy/pic12.2.png"),
+    new Drop(12, "Nezuko", "./images/easy/pic13.2.jpg"),
+    new Drop(13, "Yugi", "./images/easy/pic14.2.jpg")
 ];
 
 let drags = [
