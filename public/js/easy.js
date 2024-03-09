@@ -43,20 +43,20 @@ let drops = [
 ];
 
 let drags = [
-    new Drag(0, "Pikachu", "../assets/audios/", "./images/easy/pic1.webp"),
-    new Drag(1, "Goku", "../assets/audios/",  "./images/easy/pic2.png"),
-    new Drag(2, "Luffy", "../assets/audios/", "./images/easy/pic3.jpg"),
-    new Drag(3, "Naruto", "../assets/audios/", "./images/easy/pic4.png"),
-    new Drag(4, "Oliver", "../assets/audios/", "./images/easy/pic5.png"),
-    new Drag(5, "Seiya", "../assets/audios/", "./images/easy/pic6.png"),
-    new Drag(6, "Santana", "../assets/audios/", "./images/easy/pic7.png"),
-    new Drag(7, "Anya", "../assets/audios/", "./images/easy/pic8.png"),
-    new Drag(8, "Asuka", "../assets/audios/", "./images/easy/pic9.jpg"),
-    new Drag(9, "Kira", "../assets/audios/", "./images/easy/pic10.jpg"),
-    new Drag(10, "Sailor Moon", "../assets/audios/", "./images/easy/pic11.png"),
-    new Drag(11, "Eren", "../assets/audios/", "./images/easy/pic12.png"),
-    new Drag(12, "Nezuko", "../assets/audios/", "./images/easy/pic13.png"),
-    new Drag(13, "Yugi", "../assets/audios/", "./images/easy/pic14.png")
+    new Drag(0, "Pikachu", "../assets/easy/son1.mp3", "./images/easy/pic1.webp"),
+    new Drag(1, "Goku", "../assets/easy/son2.mp3",  "./images/easy/pic2.png"),
+    new Drag(2, "Luffy", "../assets/easy/son3.mp3", "./images/easy/pic3.jpg"),
+    new Drag(3, "Naruto", "../assets/easy/son4.mp3", "./images/easy/pic4.png"),
+    new Drag(4, "Oliver", "../assets/easy/son5.mp3", "./images/easy/pic5.png"),
+    new Drag(5, "Seiya", "../assets/easy/son6.mp3", "./images/easy/pic6.png"),
+    new Drag(6, "Saitama", "../assets/easy/son7.mp3", "./images/easy/pic7.png"),
+    new Drag(7, "Anya", "../assets/easy/son7.mp3", "./images/easy/pic8.png"),
+    new Drag(8, "Asuka", "../assets/easy/son8.mp3", "./images/easy/pic9.jpg"),
+    new Drag(9, "Kira", "../assets/easy/son9.mp3", "./images/easy/pic10.jpg"),
+    new Drag(10, "Sailor Moon", "../assets/easy/son10.mp3", "./images/easy/pic11.png"),
+    new Drag(11, "Eren", "../assets/easy/son11.mp3", "./images/easy/pic12.png"),
+    new Drag(12, "Nezuko", "../assets/easy/son12.mp3", "./images/easy/pic13.png"),
+    new Drag(13, "Yugi", "../assets/easy/son13.mp3", "./images/easy/pic14.png")
 ];
 let characters = [];
 let scenarios = [];
