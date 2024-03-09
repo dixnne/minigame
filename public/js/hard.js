@@ -26,20 +26,20 @@ class Drag{
 }
 
 let drops = [
-    new Drop(0, "Thorfinn", "../assets/audios/", "./images/hard/pic1.2.png"),
-    new Drop(1, "Lain", "../assets/audios/",  "./images/hard/pic2.2.jpg"),
-    new Drop(2, "Yu", "../assets/audios/", "./images/hard/pic3.2.jpg"),
-    new Drop(3, "Maka", "../assets/audios/", "./images/hard/pic4.2.jpg"),
-    new Drop(4, "Guts", "../assets/audios/", "./images/hard/pic5.2.jpg"),
-    new Drop(5, "Alucard", "../assets/audios/", "./images/hard/pic6.2.png"),
-    new Drop(6, "Hei", "../assets/audios/", "./images/hard/pic7.2.webp"),
-    new Drop(7, "Durham", "../assets/audios/", "./images/hard/pic8.2.webp"),
-    new Drop(8, "Isao", "../assets/audios/", "./images/hard/pic9.2.jpg"),
-    new Drop(9, "Shorter", "../assets/audios/", "./images/hard/pic10.2.jpg"),
-    new Drop(10, "Kure Raian", "../assets/audios/", "./images/hard/pic11.2.jpg"),
-    new Drop(11, "Hidenori", "../assets/audios/", "./images/hard/pic12.2.webp"),
-    new Drop(12, "Death the kid", "../assets/audios/", "./images/hard/pic13.2.jpg"),
-    new Drop(13, "Shura", "../assets/audios/", "./images/medium/pic15.2.jpg")
+    new Drop(0, "Thorfinn",  "./images/hard/pic1.2.png"),
+    new Drop(1, "Lain", "./images/hard/pic2.2.jpg"),
+    new Drop(2, "Yu", "./images/hard/pic3.2.jpg"),
+    new Drop(3, "Maka", "./images/hard/pic4.2.jpg"),
+    new Drop(4, "Guts", "./images/hard/pic5.2.jpg"),
+    new Drop(5, "Alucard", "./images/hard/pic6.2.png"),
+    new Drop(6, "Hei", "./images/hard/pic7.2.webp"),
+    new Drop(7, "Durham", "./images/hard/pic8.2.webp"),
+    new Drop(8, "Isao", "./images/hard/pic9.2.jpg"),
+    new Drop(9, "Shorter", "./images/hard/pic10.2.jpg"),
+    new Drop(10, "Kure Raian", "./images/hard/pic11.2.jpg"),
+    new Drop(11, "Hidenori", "./images/hard/pic12.2.webp"),
+    new Drop(12, "Death the kid", "./images/hard/pic13.2.jpg"),
+    new Drop(13, "Shura", "./images/medium/pic15.2.jpg")
 ];
 
 let drags = [
