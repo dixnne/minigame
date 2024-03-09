@@ -49,7 +49,7 @@ let drags = [
     new Drag(3, "Naruto", "../assets/easy/son4.mp3", "./images/easy/pic4.png"),
     new Drag(4, "Oliver", "../assets/easy/son5.mp3", "./images/easy/pic5.png"),
     new Drag(5, "Seiya", "../assets/easy/son6.mp3", "./images/easy/pic6.png"),
-    new Drag(6, "Saitama", "../assets/easy/son7.mp3", "./images/easy/pic7.png"),
+    new Drag(6, "Saitama", "../assets/easy/sonsai.mp3", "./images/easy/pic7.png"),
     new Drag(7, "Anya", "../assets/easy/son7.mp3", "./images/easy/pic8.png"),
     new Drag(8, "Asuka", "../assets/easy/son8.mp3", "./images/easy/pic9.jpg"),
     new Drag(9, "Kira", "../assets/easy/son9.mp3", "./images/easy/pic10.jpg"),
