@@ -347,7 +347,7 @@ function checkTime() {
 
 function checkPoints() {
     if (localStorage.easyPoints) {
-        if (localStorage.easyPoints > pointsSum) {
+        if (localStorage.easyPoints < pointsSum) {
             localStorage.easyPoints = pointsSum;
         } 
     } else {

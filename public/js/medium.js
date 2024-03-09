@@ -348,7 +348,7 @@ function checkTime() {
 
 function checkPoints() {
     if (localStorage.mediumPoints) {
-        if (localStorage.mediumPoints > pointsSum) {
+        if (localStorage.mediumPoints < pointsSum) {
             localStorage.mediumPoints = pointsSum;
         } 
     } else {
