@@ -37,7 +37,7 @@ let drops = [
     new Drop(5, "Seiya", "./images/easy/seiya-bg.png"),
     new Drop(6, "Saitama", "./images/easy/pic7.2.webp"),
     new Drop(7, "Anya Forger", "./images/easy/anya-bg.jpeg"),
-    new Drop(8, "Sōryū Asuka Rangurē", "./images/easy/pic9.2.jpg"),
+    new Drop(8, "Sōryū Asuka", "./images/easy/pic9.2.jpg"),
     new Drop(9, "Kira", "./images/easy/pic10.2.jpg"),
     new Drop(10, "Sailor Moon", "./images/easy/sailormoon-bg.jpeg"),
     new Drop(11, "Eren Jeager",  "./images/easy/pic12.2.png"),
@@ -54,7 +54,7 @@ let drags = [
     new Drag(5, "Seiya", "./assets/easy/son6.mp3", "./images/easy/seiya.png"),
     new Drag(6, "Saitama", "./assets/easy/saitama.mp3", "./images/easy/saitama.png"),
     new Drag(7, "Anya Forger", "./assets/easy/anya.mp3", "./images/easy/anya.png"),
-    new Drag(8, "Sōryū Asuka Rangurē", "./assets/easy/son8.mp3", "./images/easy/asuka.webp"),
+    new Drag(8, "Sōryū Asuka", "./assets/easy/son8.mp3", "./images/easy/asuka.webp"),
     new Drag(9, "Kira", "./assets/easy/kira.mp3", "./images/easy/kira.webp"),
     new Drag(10, "Sailor Moon", "./assets/easy/sailormoon.mp3", "./images/easy/sailormoon.png"),
     new Drag(11, "Eren Jeager", "./assets/easy/eren.mp3", "./images/easy/eren.png"),
@@ -276,13 +276,13 @@ function updatePoints(pointsState) {
     let points = 0;
     if (pointsState) {
         points = 1;
-        if (time <= 10) {
+        if (time <= 20) {
             points = points * 5;
-        } else if (time <= 20 && time > 10) {
+        } else if (time <= 40 && time > 20) {
             points = points * 4;
-        } else if (time <= 30 && time > 20) {
+        } else if (time <= 60 && time > 40) {
             points = points * 3;
-        } else if (time <= 40 && time > 30) {
+        } else if (time <= 80 && time > 60) {
             points = points * 2;
         } else {
             points = points * 1;
@@ -290,20 +290,18 @@ function updatePoints(pointsState) {
 
     } else {
         points = -1;
-        if (time <= 10) {
+        if (time <= 20) {
             points = points * 1;
-        } else if (time <= 20 && time > 10) {
+        } else if (time <= 40 && time > 20) {
             points = points * 2;
-        } else if (time <=30 && time > 20) {
+        } else if (time <=60 && time > 40) {
             points = points * 3;
-        } else if (time <= 40 && time > 30) {
+        } else if (time <= 80 && time > 60) {
             points = points * 4;
         } else {
             points = points * 5;
         }
     }
-
-    
 
     pointsSum += points;
     document.getElementById("points").innerHTML = pointsSum;

@@ -275,13 +275,13 @@ function updatePoints(pointsState) {
     let points = 0;
     if (pointsState) {
         points = 1;
-        if (time <= 10) {
+        if (time <= 20) {
             points = points * 5;
-        } else if (time <= 20 && time > 10) {
+        } else if (time <= 40 && time > 20) {
             points = points * 4;
-        } else if (time <= 30 && time > 20) {
+        } else if (time <= 60 && time > 40) {
             points = points * 3;
-        } else if (time <= 40 && time > 30) {
+        } else if (time <= 80 && time > 60) {
             points = points * 2;
         } else {
             points = points * 1;
@@ -289,20 +289,18 @@ function updatePoints(pointsState) {
 
     } else {
         points = -1;
-        if (time <= 10) {
+        if (time <= 20) {
             points = points * 1;
-        } else if (time <= 20 && time > 10) {
+        } else if (time <= 40 && time > 20) {
             points = points * 2;
-        } else if (time <=30 && time > 20) {
+        } else if (time <=60 && time > 40) {
             points = points * 3;
-        } else if (time <= 40 && time > 30) {
+        } else if (time <= 80 && time > 60) {
             points = points * 4;
         } else {
             points = points * 5;
         }
     }
-
-    
 
     pointsSum += points;
     document.getElementById("points").innerHTML = pointsSum;
