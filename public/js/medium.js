@@ -6,7 +6,11 @@ let drop = [];
 let canvas = [];
 let pointsSum = 0;
 let hits = 0;
+let stats = [];
+let playerStats = "";
+let playerIndex = 0;
 let audioWasPlaying = false;
+
 
 class Drop{
     constructor(id, character, dropSrc){
