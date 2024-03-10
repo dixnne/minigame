@@ -6,6 +6,11 @@ let drop = [];
 let canvas = [];
 let pointsSum = 0;
 let hits = 0;
+let stats = [];
+let playerStats = "";
+let playerIndex = 0;
+let audioWasPlaying = false;
+
 
 class Drop{
     constructor(id, character, dropSrc){
@@ -25,39 +30,39 @@ class Drag{
 }
 
 let drops = [
-    new Drop(0, "Edward", "./images/medium/edward-bg.jpg"),
-    new Drop(1, "koro-sensei", "./images/medium/koro-bg.webp"),
-    new Drop(2, "Gon", "./images/medium/gon-bg.webp"),
-    new Drop(3, "Kaneki", "./images/medium/kaneki-bg.jpeg"),
-    new Drop(4, "Hinata", "./images/medium/hinata-bg.jpeg"),
-    new Drop(5, "Gojo", "./images/medium/gojo-bg.jpeg"),
-    new Drop(6, "Horu", "./images/medium/hori-bg.jpg"),
-    new Drop(7, "Bocchi", "./images/medium/bocchi-bg.avif"),
-    new Drop(8, "Aisaka", "./images/medium/aisaka-bg.jpeg"),
-    new Drop(9, "Kirito", "./images/medium/kirito-bg.png"),
-    new Drop(10, "Himura", "./images/medium/himura-bg.jpeg"),
+    new Drop(0, "Edward Elric", "./images/medium/edward-bg.jpg"),
+    new Drop(1, "Koro Sensei", "./images/medium/koro-bg.webp"),
+    new Drop(2, "Gon Freecss", "./images/medium/gon-bg.webp"),
+    new Drop(3, "Kaneki Ken", "./images/medium/kaneki-bg.jpeg"),
+    new Drop(4, "Shōyō Hinata", "./images/medium/hinata-bg.jpeg"),
+    new Drop(5, "Gojō Satoru", "./images/medium/gojo-bg.jpeg"),
+    new Drop(6, "Hori Kyōko", "./images/medium/hori-bg.jpg"),
+    new Drop(7, "Gotō Hitori", "./images/medium/bocchi-bg.avif"),
+    new Drop(8, "Taiga Aisaka", "./images/medium/aisaka-bg.jpeg"),
+    new Drop(9, "Kirigaya Kazuto", "./images/medium/kirito-bg.png"),
+    new Drop(10, "Himura Kenshin", "./images/medium/himura-bg.jpeg"),
     new Drop(11, "Pochita", "./images/medium/pochita-bg.jpg_large"),
-    new Drop(12, "Kaori", "./images/medium/kaori-bg.jpeg"),
-    new Drop(13, "Mitsuha", "./images/medium/mitsuha-bg.avif"),
-    new Drop(14, "Sakura", "./images/medium/sakura-bg.png")
+    new Drop(12, "Miyazono Kawori", "./images/medium/kaori-bg.jpeg"),
+    new Drop(13, "Miyamizu Mitsuha", "./images/medium/mitsuha-bg.avif"),
+    new Drop(14, "Kinomoto Sakura", "./images/medium/sakura-bg.png")
 ];
 
 let drags = [
-    new Drag(0, "Edward", "./assets/medium/son1.mp3", "./images/medium/edward.webp"),
-    new Drag(1, "Koro-sensei", "./assets/medium/son2.mp3",  "./images/medium/pic2.png"),
-    new Drag(2, "Gon", "./assets/medium/son3.mp3", "./images/medium/pic3.png"),
-    new Drag(3, "Kaneki", "./assets/medium/son4.mp3", "./images/medium/pic4.png"),
-    new Drag(4, "Hinata", "./assets/medium/son5.mp3", "./images/medium/hinata.png"),
-    new Drag(5, "Gojo", "./assets/medium/son6.mp3", "./images/medium/gojo.png"),
-    new Drag(6, "Horu", "./assets/medium/son7.mp3", "./images/medium/hori.webp"),
-    new Drag(7, "Bocchi", "./assets/medium/son8.mp3", "./images/medium/bocchi.png"),
-    new Drag(8, "Aisaka", "./assets/medium/son9.mp3", "./images/medium/aisaka.png"),
-    new Drag(9, "Kirito", "./assets/medium/son10.mp3", "./images/medium/kirito.png"),
-    new Drag(10, "Himura", "./assets/medium/son11.mp3", "./images/medium/himura.webp"),
-    new Drag(11, "Pochita", "./assets/medium/son12.mp3", "./images/medium/pochita.png"),
-    new Drag(12, "Kaori", "./assets/medium/son13.mp3", "./images/medium/kaori.png"),
-    new Drag(13, "Mitsuha", "./assets/medium/son14.mp3", "./images/medium/mitsuha.png"),
-    new Drop(14, "Sakura", "./assets/medium/son14.mp3", "./images/medium/sakura.png")
+    new Drag(0, "Edward Elric", "./assets/medium/edward.mp3", "./images/medium/edward.webp"),
+    new Drag(1, "Koro Sensei", "./assets/medium/koro.mp3",  "./images/medium/pic2.png"),
+    new Drag(2, "Gon Freecss", "./assets/medium/gon.mp3", "./images/medium/pic3.png"),
+    new Drag(3, "Kaneki Ken", "./assets/medium/kaneki.mp3", "./images/medium/pic4.png"),
+    new Drag(4, "Shōyō Hinata", "./assets/medium/hinata.mp3", "./images/medium/hinata.png"),
+    new Drag(5, "Gojō Satoru", "./assets/medium/gojo.mp3", "./images/medium/gojo.png"),
+    new Drag(6, "Hori Kyōko", "./assets/medium/son7.mp3", "./images/medium/hori.webp"),
+    new Drag(7, "Gotō Hitori", "./assets/medium/bocchi.mp3", "./images/medium/bocchi.png"),
+    new Drag(8, "Taiga Aisaka", "./assets/medium/aisaka.mp3", "./images/medium/aisaka.png"),
+    new Drag(9, "Kirigaya Kazuto", "./assets/medium/kirito.mp3", "./images/medium/kirito.png"),
+    new Drag(10, "Himura Kenshin", "./assets/medium/son11.mp3", "./images/medium/himura.webp"),
+    new Drag(11, "Pochita", "./assets/medium/pochita.mp3", "./images/medium/pochita.png"),
+    new Drag(12, "Miyazono Kawori", "./assets/medium/kaori.mp3", "./images/medium/kaori.png"),
+    new Drag(13, "Miyamizu Mitsuha", "./assets/medium/mitsuha.mp3", "./images/medium/mitsuha.png"),
+    new Drag(14, "Kinomoto Sakura", "./assets/medium/sakura.mp3", "./images/medium/sakura.png")
 ];
 
 let characters = [];
@@ -205,6 +210,10 @@ function dropping(e) {
                     if (element.id == character.id) {
                         let phrase = new Audio(character.audio);
                         let cname = character.character;
+                        if (!audio.paused) {
+                            audio.pause();
+                            audioWasPlaying = true;
+                        }
                         phrase.play();
                         phrase.addEventListener("ended", () => {
                             if ('speechSynthesis' in window) {
@@ -218,6 +227,9 @@ function dropping(e) {
                                 msg.lang = "ja-JP";
                                 msg.text = cname;
                                 window.speechSynthesis.speak(msg);
+                                msg.addEventListener("end", () => {
+                                    if (audioWasPlaying) audio.play();
+                                });
                             }else{
                                  // Speech Synthesis Not Supported 
                                 console.log("Sorry, your browser doesn't support text to speech!");
@@ -253,10 +265,12 @@ function dropping(e) {
                         });
                     }
                 }
-            }
+            } 
         }
     } else {
         updatePoints(false);
+        let fail = new Audio("./assets/baka.mp3");
+        fail.play();
     }
 }
 
@@ -265,13 +279,13 @@ function updatePoints(pointsState) {
     let points = 0;
     if (pointsState) {
         points = 1;
-        if (time <= 10) {
+        if (time <= 20) {
             points = points * 5;
-        } else if (time <= 20 && time > 10) {
+        } else if (time <= 40 && time > 20) {
             points = points * 4;
-        } else if (time <= 30 && time > 20) {
+        } else if (time <= 60 && time > 40) {
             points = points * 3;
-        } else if (time <= 40 && time > 30) {
+        } else if (time <= 80 && time > 60) {
             points = points * 2;
         } else {
             points = points * 1;
@@ -279,20 +293,18 @@ function updatePoints(pointsState) {
 
     } else {
         points = -1;
-        if (time <= 10) {
+        if (time <= 20) {
             points = points * 1;
-        } else if (time <= 20 && time > 10) {
+        } else if (time <= 40 && time > 20) {
             points = points * 2;
-        } else if (time <=30 && time > 20) {
+        } else if (time <=60 && time > 40) {
             points = points * 3;
-        } else if (time <= 40 && time > 30) {
+        } else if (time <= 80 && time > 60) {
             points = points * 4;
         } else {
             points = points * 5;
         }
     }
-
-    
 
     pointsSum += points;
     document.getElementById("points").innerHTML = pointsSum;

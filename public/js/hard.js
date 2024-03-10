@@ -6,6 +6,11 @@ let drop = [];
 let canvas = [];
 let pointsSum = 0;
 let hits = 0;
+let stats = [];
+let playerStats = "";
+let playerIndex = 0;
+let audioWasPlaying = false;
+
 
 class Drop{
     constructor(id, character, dropSrc){
@@ -38,7 +43,9 @@ let drops = [
     new Drop(10, "Hidenori", "./images/hard/pic11.2.jpg"),
     new Drop(11, "Death the kid", "./images/hard/pic12.2.webp"),
     new Drop(12, "Shura", "./images/hard/pic13.2.jpg"),
-    new Drop(13, "Lian", "./images/medium/pic14.2.jpeg")
+    new Drop(13, "Lian", "./images/medium/pic14.2.jpeg"),
+    new Drop(14, "Jabami Yumeko", "./images/hard/jabami-bg.webp"),
+    new Drop(15, "Fujiwara Chika", "./images/hard/chika-bg.webp")
 ];
 
 let drags = [
@@ -55,7 +62,9 @@ let drags = [
     new Drag(10, "Hidenori", "./assets/audios/", "./images/hard/pic11.webp"),
     new Drag(11, "Death the kid", "./assets/audios/", "./images/hard/pic12.jpg"),
     new Drag(12, "Shura", "./assets/audios/", "./images/hard/pic13.jpg"),
-    new Drag(13, "Lian", "./assets/audios/", "./images/medium/picla.webp")
+    new Drag(13, "Lian", "./assets/audios/", "./images/medium/picla.webp"),
+    new Drag(14, "Jabami Yumeko", "./assets/hard/kakegurui.mp3", "./images/hard/jabami.png"),
+    new Drag(15, "Fujiwara Chika", "./assets/hard/chika.mp3", "./images/hard/chika.png")
 ];
 
 let characters = [];
@@ -203,6 +212,10 @@ function dropping(e) {
                     if (element.id == character.id) {
                         let phrase = new Audio(character.audio);
                         let cname = character.character;
+                        if (!audio.paused) {
+                            audio.pause();
+                            audioWasPlaying = true;
+                        }
                         phrase.play();
                         phrase.addEventListener("ended", () => {
                             if ('speechSynthesis' in window) {
@@ -216,6 +229,9 @@ function dropping(e) {
                                 msg.lang = "ja-JP";
                                 msg.text = cname;
                                 window.speechSynthesis.speak(msg);
+                                msg.addEventListener("end", () => {
+                                    if (audioWasPlaying) audio.play();
+                                });
                             }else{
                                  // Speech Synthesis Not Supported 
                                 console.log("Sorry, your browser doesn't support text to speech!");
@@ -255,6 +271,8 @@ function dropping(e) {
         }
     } else {
         updatePoints(false);
+        let fail = new Audio("./assets/baka.mp3");
+        fail.play();
     }
 }
 
@@ -263,13 +281,13 @@ function updatePoints(pointsState) {
     let points = 0;
     if (pointsState) {
         points = 1;
-        if (time <= 10) {
+        if (time <= 20) {
             points = points * 5;
-        } else if (time <= 20 && time > 10) {
+        } else if (time <= 40 && time > 20) {
             points = points * 4;
-        } else if (time <= 30 && time > 20) {
+        } else if (time <= 60 && time > 40) {
             points = points * 3;
-        } else if (time <= 40 && time > 30) {
+        } else if (time <= 80 && time > 60) {
             points = points * 2;
         } else {
             points = points * 1;
@@ -277,20 +295,18 @@ function updatePoints(pointsState) {
 
     } else {
         points = -1;
-        if (time <= 10) {
+        if (time <= 20) {
             points = points * 1;
-        } else if (time <= 20 && time > 10) {
+        } else if (time <= 40 && time > 20) {
             points = points * 2;
-        } else if (time <=30 && time > 20) {
+        } else if (time <=60 && time > 40) {
             points = points * 3;
-        } else if (time <= 40 && time > 30) {
+        } else if (time <= 80 && time > 60) {
             points = points * 4;
         } else {
             points = points * 5;
         }
     }
-
-    
 
     pointsSum += points;
     document.getElementById("points").innerHTML = pointsSum;

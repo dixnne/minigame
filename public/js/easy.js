@@ -9,6 +9,7 @@ let hits = 0;
 let stats = [];
 let playerStats = "";
 let playerIndex = 0;
+let audioWasPlaying = false;
 
 class Drop{
     constructor(id, character, dropSrc){
@@ -28,37 +29,37 @@ class Drag{
 }
 
 let drops = [
-    new Drop(0, "Pikachu", "./images/easy/pic1.2.png"),
-    new Drop(1, "Goku", "./images/easy/pic2.2.webp"),
-    new Drop(2, "Luffy", "./images/easy/pic3.2.png"),
-    new Drop(3, "Naruto", "./images/easy/pic4.2.jpg"),
-    new Drop(4, "Oliver", "./images/easy/pic5.2.webp"),
-    new Drop(5, "Seiya", "./images/easy/pic6.2.jpg"),
-    new Drop(6, "Santana", "./images/easy/pic7.2.webp"),
-    new Drop(7, "Anya", "./images/easy/pic8.2.jpeg"),
-    new Drop(8, "Asuka", "./images/easy/pic9.2.jpg"),
+    new Drop(0, "Pikachu", "./images/easy/pikachu-bg.jpeg"),
+    new Drop(1, "Son Gokū", "./images/easy/goku-bg.jpeg"),
+    new Drop(2, "Monkey D. Luffy", "./images/easy/luffy-bg.jpeg"),
+    new Drop(3, "Uzumaki Naruto", "./images/easy/naruto-bg.jpeg"),
+    new Drop(4, "Oliver Atton", "./images/easy/oliver-bg.webp"),
+    new Drop(5, "Seiya", "./images/easy/seiya-bg.png"),
+    new Drop(6, "Saitama", "./images/easy/pic7.2.webp"),
+    new Drop(7, "Anya Forger", "./images/easy/anya-bg.jpeg"),
+    new Drop(8, "Sōryū Asuka", "./images/easy/pic9.2.jpg"),
     new Drop(9, "Kira", "./images/easy/pic10.2.jpg"),
-    new Drop(10, "Sailor Moon", "./images/easy/pic11.2.jpg"),
-    new Drop(11, "Eren",  "./images/easy/pic12.2.png"),
-    new Drop(12, "Nezuko", "./images/easy/pic13.2.jpg"),
-    new Drop(13, "Yugi", "./images/easy/pic14.2.jpg")
+    new Drop(10, "Sailor Moon", "./images/easy/sailormoon-bg.jpeg"),
+    new Drop(11, "Eren Jeager",  "./images/easy/pic12.2.png"),
+    new Drop(12, "Kamado Nezuko", "./images/easy/nezuko-bg.webp"),
+    new Drop(13, "Yūgi Mutō", "./images/easy/pic14.2.jpg")
 ];
 
 let drags = [
-    new Drag(0, "Pikachu", "./assets/easy/son1.mp3", "./images/easy/pic1.webp"),
-    new Drag(1, "Goku", "./assets/easy/son2.mp3",  "./images/easy/pic2.png"),
-    new Drag(2, "Luffy", "./assets/easy/son3.mp3", "./images/easy/pic3.jpg"),
-    new Drag(3, "Naruto", "./assets/easy/son4.mp3", "./images/easy/pic4.png"),
-    new Drag(4, "Oliver", "./assets/easy/son5.mp3", "./images/easy/pic5.png"),
-    new Drag(5, "Seiya", "./assets/easy/son6.mp3", "./images/easy/pic6.png"),
-    new Drag(6, "Saitama", "./assets/easy/sonsai.mp3", "./images/easy/pic7.png"),
-    new Drag(7, "Anya", "./assets/easy/son7.mp3", "./images/easy/pic8.png"),
-    new Drag(8, "Asuka", "./assets/easy/son8.mp3", "./images/easy/pic9.jpg"),
-    new Drag(9, "Kira", "./assets/easy/son9.mp3", "./images/easy/pic10.jpg"),
-    new Drag(10, "Sailor Moon", "./assets/easy/son10.mp3", "./images/easy/pic11.png"),
-    new Drag(11, "Eren", "./assets/easy/son11.mp3", "./images/easy/pic12.png"),
-    new Drag(12, "Nezuko", "./assets/easy/son12.mp3", "./images/easy/pic13.png"),
-    new Drag(13, "Yugi", "./assets/easy/son13.mp3", "./images/easy/pic14.png")
+    new Drag(0, "Pikachu", "./assets/easy/pikachu.mp3", "./images/easy/pikachu.png"),
+    new Drag(1, "Son Gokū", "./assets/easy/son2.mp3",  "./images/easy/goku.png"),
+    new Drag(2, "Monkey D. Luffy", "./assets/easy/luffy.mp3", "./images/easy/luffy.png"),
+    new Drag(3, "Uzumaki Naruto", "./assets/easy/son4.mp3", "./images/easy/naruto.png"),
+    new Drag(4, "Oliver Atton", "./assets/easy/oliver.mp3", "./images/easy/oliver.webp"),
+    new Drag(5, "Seiya", "./assets/easy/son6.mp3", "./images/easy/seiya.png"),
+    new Drag(6, "Saitama", "./assets/easy/saitama.mp3", "./images/easy/saitama.png"),
+    new Drag(7, "Anya Forger", "./assets/easy/anya.mp3", "./images/easy/anya.png"),
+    new Drag(8, "Sōryū Asuka", "./assets/easy/son8.mp3", "./images/easy/asuka.webp"),
+    new Drag(9, "Kira", "./assets/easy/kira.mp3", "./images/easy/kira.webp"),
+    new Drag(10, "Sailor Moon", "./assets/easy/sailormoon.mp3", "./images/easy/sailormoon.png"),
+    new Drag(11, "Eren Jeager", "./assets/easy/eren.mp3", "./images/easy/eren.png"),
+    new Drag(12, "Kamado Nezuko", "./assets/easy/nezuko.mp3", "./images/easy/nezuko.webp"),
+    new Drag(13, "Yūgi Mutō", "./assets/easy/yugi.mp3", "./images/easy/yugi.webp")
 ];
 
 let characters = [];
@@ -206,6 +207,10 @@ function dropping(e) {
                     if (element.id == character.id) {
                         let phrase = new Audio(character.audio);
                         let cname = character.character;
+                        if (!audio.paused) {
+                            audio.pause();
+                            audioWasPlaying = true;
+                        }
                         phrase.play();
                         phrase.addEventListener("ended", () => {
                             if ('speechSynthesis' in window) {
@@ -219,6 +224,9 @@ function dropping(e) {
                                 msg.lang = "ja-JP";
                                 msg.text = cname;
                                 window.speechSynthesis.speak(msg);
+                                msg.addEventListener("end", () => {
+                                    if (audioWasPlaying) audio.play();
+                                });
                             }else{
                                  // Speech Synthesis Not Supported 
                                 console.log("Sorry, your browser doesn't support text to speech!");
@@ -258,6 +266,8 @@ function dropping(e) {
         }
     } else {
         updatePoints(false);
+        let fail = new Audio("./assets/baka.mp3");
+        fail.play();
     }
 }
 
@@ -266,13 +276,13 @@ function updatePoints(pointsState) {
     let points = 0;
     if (pointsState) {
         points = 1;
-        if (time <= 10) {
+        if (time <= 20) {
             points = points * 5;
-        } else if (time <= 20 && time > 10) {
+        } else if (time <= 40 && time > 20) {
             points = points * 4;
-        } else if (time <= 30 && time > 20) {
+        } else if (time <= 60 && time > 40) {
             points = points * 3;
-        } else if (time <= 40 && time > 30) {
+        } else if (time <= 80 && time > 60) {
             points = points * 2;
         } else {
             points = points * 1;
@@ -280,20 +290,18 @@ function updatePoints(pointsState) {
 
     } else {
         points = -1;
-        if (time <= 10) {
+        if (time <= 20) {
             points = points * 1;
-        } else if (time <= 20 && time > 10) {
+        } else if (time <= 40 && time > 20) {
             points = points * 2;
-        } else if (time <=30 && time > 20) {
+        } else if (time <=60 && time > 40) {
             points = points * 3;
-        } else if (time <= 40 && time > 30) {
+        } else if (time <= 80 && time > 60) {
             points = points * 4;
         } else {
             points = points * 5;
         }
     }
-
-    
 
     pointsSum += points;
     document.getElementById("points").innerHTML = pointsSum;

@@ -15,6 +15,10 @@ document.getElementById("again").addEventListener("click", () => {
     window.location.href = "./levels.html";
 });
 
+document.getElementById("certificateview").addEventListener("click", () => {
+  window.location.href = "./certificate.html";
+});
+
 document.getElementById("download").addEventListener("click", () => {
     // Get the canvas
     var certificate = document.getElementById("certificate");
