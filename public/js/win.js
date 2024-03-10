@@ -230,7 +230,6 @@ switch (playerStats.lastLevel) {
 }
 
 ctxWin.beginPath();
-ctxWin.lineWidth = 5;
 const inset = ctxWin.lineWidth/2;
 const radius = [50,0,50,0];
 const topLeftRadius = radius[0];
