@@ -50,5 +50,5 @@ stopButton.addEventListener('click', () => {
 });
 
 window.addEventListener("load", () => {
-    audio.play();
+    //audio.play();
 });
