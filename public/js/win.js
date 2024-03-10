@@ -205,3 +205,128 @@ function getRandomColor() {
 //}
 
 setInterval(changeTextColor, 1000);
+
+//certificados
+const canvascer = document.querySelector('#certificate'); //objeto canva
+const ctxWin = canvascer.getContext('2d'); //contexto 2d
+ctxWin.lineWidth = 5;
+
+switch (playerStats.lastLevel) {
+  case "easy":
+      ctxWin.strokeStyle= '#6FEDD6'; //color del borde
+      break;
+  case "medium":
+      ctxWin.strokeStyle= '#FF9551'; //color del borde
+      break;
+  case "hard":
+      ctxWin.strokeStyle= '#FF4A4A';//color del borde
+      break;
+  default:
+      break;
+}
+
+ctxWin.beginPath();
+ctxWin.lineWidth = 5;
+const inset = ctxWin.lineWidth/2;
+const radius = [50,0,50,0];
+const topLeftRadius = radius[0];
+const topRightRadius = radius[1];
+const bottomRightRadius = radius[2];
+const bottomLeftRadius = radius[3];
+
+const width = canvascer.width;
+const height = canvascer.height;
+
+ctxWin.lineTo(topLeftRadius,inset);
+ctxWin.lineTo(width - topRightRadius , inset );
+ctxWin.lineTo(width - inset , topRightRadius);
+ctxWin.lineTo(width - inset , height - bottomRightRadius);
+ctxWin.lineTo(width - bottomRightRadius, height - inset);
+ctxWin.lineTo(bottomLeftRadius , height - inset);
+ctxWin.lineTo(inset , height - bottomLeftRadius);
+ctxWin.lineTo(inset , topLeftRadius);
+ctxWin.closePath();
+ctxWin.fill();
+ctxWin.stroke();
+
+        
+ctxWin.font = "30px serif";
+ctxWin.strokeText("Certificado", 130, 100);
+
+ctxWin.strokeStyle= '#FF4A4A';
+ctxWin.font = "40px sans-serif";
+ctxWin.textBaseline = "Lato";
+ctxWin.strokeText("OTAKU - METER", 60, 60);
+ctxWin.strokeStyle= '#FF9551';
+ctxWin.strokeText("OTAKU - METER", 60, 55);
+ctxWin.strokeStyle= '#6FEDD6';
+ctxWin.strokeText("OTAKU - METER", 60, 50);
+ctxWin.strokeStyle= '#B9FFF8';
+ctxWin.strokeText("OTAKU - METER", 60, 45);
+
+ctxWin.strokeStyle= '#000000';
+ctxWin.font = "30px serif";
+ctxWin.fillText("Certificado", 130, 100);
+
+var nameplayer= playerStats.username;
+var levelplayer = playerStats.lastLevel; 
+ctxWin.fillStyle= '#F9F5F6';
+ctxWin.font = "15px cursive";
+ctxWin.textBaseline = "Dancing Script";
+ctxWin.fillText("Otrorgamos a "+nameplayer+"", 20, 130);
+ctxWin.fillText("El certificado nivel "+levelplayer+" Del OTAKU-METER", 20, 150);
+switch (playerStats.lastLevel) {
+  case "easy":
+      ctxWin.fillText("Fuiste un gran guerrero, espero", 20, 190);
+      ctxWin.fillText("que renazcas como una persona buena,", 20, 210);
+      ctxWin.fillText("si es asi, volveremos a luchar.", 20, 230);
+      ctxWin.fillText("-Goku.", 20, 250);
+      break;
+  case "medium":
+      ctxWin.fillText("Los sueños solo son sueños", 20, 190);
+      ctxWin.fillText("si algun dia se cumplen", 20, 210);
+      ctxWin.fillText("nunca fueron sueños.", 20, 230);
+      ctxWin.fillText("-Edward Elric.", 20, 250);
+      break;
+  case "hard":
+      ctxWin.fillText("¿Monstruo? Me solprende que alguien ", 20, 190);
+      ctxWin.fillText("que se divierte con la muerte ", 20, 210);
+      ctxWin.fillText("de su propia especie se capaz", 20, 230);
+      ctxWin.fillText("de llamarme monstruo. ", 20, 250);
+      ctxWin.fillText("-Alucard",20,270)
+      break;
+  default:
+      break;
+}
+//Creadores
+ctxWin.fillText("Creadores", 150, 280);
+ctxWin.strokeStyle= '#FF4A4A';
+ctxWin.font = "25px cursive";
+ctxWin.strokeText("Dixnne", 70, 320);
+ctxWin.strokeText("Monts", 70, 370);
+ctxWin.strokeText("Keni", 230, 320);
+ctxWin.strokeText("Erik", 230, 370);
+
+ctxWin.strokeStyle= '#FF9551';
+ctxWin.strokeText("Dixnne", 68, 318);
+ctxWin.strokeText("Monts", 68, 368);
+ctxWin.strokeText("Keni", 228, 318);
+ctxWin.strokeText("Erik", 228, 368);
+
+ctxWin.strokeStyle= '#6FEDD6';
+ctxWin.strokeText("Dixnne", 66, 316);
+ctxWin.strokeText("Monts", 66, 366);
+ctxWin.strokeText("Keni", 226, 316);
+ctxWin.strokeText("Erik", 226, 366);
+
+ctxWin.strokeStyle= '#B9FFF8';
+ctxWin.strokeText("Dixnne", 64, 314);
+ctxWin.strokeText("Monts", 64, 364);
+ctxWin.strokeText("Keni", 224, 314);
+ctxWin.strokeText("Erik", 224, 364);
+
+ctxWin.fillStyle= '#000000';
+ctxWin.fillText("Dixnne", 62, 312);
+ctxWin.fillText("Monts", 62, 362);
+ctxWin.fillText("Keni", 222, 312);
+ctxWin.fillText("Erik", 222, 362);
