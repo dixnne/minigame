@@ -30,41 +30,45 @@ class Drag{
 }
 
 let drops = [
-    new Drop(0, "Thorfinn",  "./images/hard/pic1.2.png"),
-    new Drop(1, "Yu", "./images/hard/pic2.2.jpg"),
-    new Drop(2, "Maka", "./images/hard/pic3.2.jpg"),
-    new Drop(3, "Guts", "./images/hard/pic4.2.jpg"),
-    new Drop(4, "Alucard", "./images/hard/pic5.2.jpg"),
-    new Drop(5, "Hei", "./images/hard/pic6.2.png"),
-    new Drop(6, "Durham", "./images/hard/pic7.2.webp"),
+    new Drop(0, "Thorfinn Karlsefni",  "./images/hard/pic1.2.png"),
+    new Drop(1, "Ominae Yū", "./images/hard/pic2.2.jpg"),
+    new Drop(2, "Maka Arubān", "./images/hard/maka-bg.png"),
+    new Drop(3, "Guts", "./images/hard/guts-bg.jpeg"),
+    new Drop(4, "Alucard", "./images/hard/alucard-bg.png"),
+    new Drop(5, "Hei", "./images/hard/hei-bg.jpeg"),
+    new Drop(6, "Durham", "./images/hard/durham-bg.jpg"),
     new Drop(7, "Isao Shinomiya", "./images/hard/pic8.2.webp"),
     new Drop(8, "Shorter Wong", "./images/hard/pic9.2.jpg"),
     new Drop(9, "Kure Raian", "./images/hard/pic10.2.jpg"),
     new Drop(10, "Hidenori Tabata", "./images/hard/pic11.2.jpg"),
     new Drop(11, "Death the kid", "./images/hard/pic12.2.webp"),
     new Drop(12, "Shura Kirigajure", "./images/hard/pic13.2.jpg"),
-    new Drop(13, "Lian", "./images/medium/pic14.2.jpeg"),
+    new Drop(13, "Lain Iwakura", "./images/hard/lain-bg.png"),
     new Drop(14, "Jabami Yumeko", "./images/hard/jabami-bg.webp"),
-    new Drop(15, "Fujiwara Chika", "./images/hard/chika-bg.webp")
+    new Drop(15, "Fujiwara Chika", "./images/hard/chika-bg.webp"),
+    new Drop(16, "Shiba Miyuki", "./images/hard/miyuki.jpeg"),
+    new Drop(17, "Katarina Claes", "./images/hard/katarina-bg.jpg")
 ];
 
 let drags = [
-    new Drag(0, "Thorfinn", "./assets/hard/thurfinn.mp3", "./images/hard/pic1.png"),
-    new Drag(1, "Yu", "./assets/hard/spriggan.mp3",  "./images/hard/pic2.jpg"),
-    new Drag(2, "Maka", "./assets/hard/maka.mp3", "./images/hard/pic3.webp"),
-    new Drag(3, "Guts", "./assets/hard/guns.mp3", "./images/hard/pic4.png"),
-    new Drag(4, "Alucard", "./assets/hard/alucard.mp3", "./images/hard/pic5.jpg"),
-    new Drag(5, "Hei", "./assets/hard/hei.mp3", "./images/hard/pic6.jpeg"),
+    new Drag(0, "Thorfinn Karlsefni", "./assets/hard/thurfinn.mp3", "./images/hard/pic1.png"),
+    new Drag(1, "Ominae Yū", "./assets/hard/spriggan.mp3",  "./images/hard/yu.png"),
+    new Drag(2, "Maka Arubān", "./assets/hard/maka.mp3", "./images/hard/pic3.webp"),
+    new Drag(3, "Guts", "./assets/hard/guns.mp3", "./images/hard/guts.webp"),
+    new Drag(4, "Alucard", "./assets/hard/alucard.mp3", "./images/hard/alucard.png"),
+    new Drag(5, "Hei", "./assets/hard/hei.mp3", "./images/hard/hei.png"),
     new Drag(6, "Durham", "./assets/hard/durham.mp3", "./images/hard/pic7.webp"),
-    new Drag(7, "Isao", "./assets/hard/isao.mp3", "./images/hard/pic8.webp"),
-    new Drag(8, "Shorter", "./assets/hard/shorter.mp3", "./images/hard/pic9.jpg"),
-    new Drag(9, "Kure Raian", "./assets/hard/raian.mp3", "./images/hard/pic10.jpg"),
-    new Drag(10, "Hidenori", "./assets/hard/Hidenori.mp3", "./images/hard/pic11.webp"),
-    new Drag(11, "Death the kid", "./assets/hard/death-the-kid.mp3", "./images/hard/pic12.jpg"),
-    new Drag(12, "Shura", "./assets/hard/shuras.mp3", "./images/hard/pic13.jpg"),
-    new Drag(13, "Lian", "./assets/hard/lian.mp3", "./images/medium/picla.webp"),
+    new Drag(7, "Isao Shinomiya", "./assets/hard/isao.mp3", "./images/hard/isao.webp"),
+    new Drag(8, "Shorter Wong", "./assets/hard/shorter.mp3", "./images/hard/shorter.webp"),
+    new Drag(9, "Kure Raian", "./assets/hard/raian.mp3", "./images/hard/kure.webp"),
+    new Drag(10, "Hidenori Tabata", "./assets/hard/Hidenori.mp3", "./images/hard/hidenori.png"),
+    new Drag(11, "Death the kid", "./assets/hard/death-the-kid.mp3", "./images/hard/deaththekid.png"),
+    new Drag(12, "Shura Kirigajure", "./assets/hard/shuras.mp3", "./images/hard/shura.webp"),
+    new Drag(13, "Lain Iwakura", "./assets/hard/lain.mp3", "./images/hard/lain.png"),
     new Drag(14, "Jabami Yumeko", "./assets/hard/kakegurui.mp3", "./images/hard/jabami.png"),
-    new Drag(15, "Fujiwara Chika", "./assets/hard/chika.mp3", "./images/hard/chika.png")
+    new Drag(15, "Fujiwara Chika", "./assets/hard/chika.mp3", "./images/hard/chika.png"),
+    new Drag(16, "Shiba Miyuki", "./assets/hard/miyuki.mp3", "./images/hard/miyuki.webp"),
+    new Drag(17, "Katarina Claes", "./assets/hard/katarina.mp3", "./images/hard/katarina.webp")
 ];
 
 let characters = [];
