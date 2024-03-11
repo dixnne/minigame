@@ -25,11 +25,9 @@ playPauseButton.addEventListener('click', () => {
     if (audio.paused || audio.ended) {
         audio.play();
         playPauseButton.innerHTML = pause;
-        localStorage.audioWasPaused = false;
     } else {
         audio.pause();
         playPauseButton.innerHTML = play;
-        localStorage.audioWasPaused = true;
     }
 });
 
@@ -38,12 +36,10 @@ muteButton.addEventListener('click', () => {
         audio.muted = true;
         muteButton.innerHTML = unmute;
         isMuted = true;
-        localStorage.audioWasMuted = true;
     } else {
         audio.muted = false;
         muteButton.innerHTML = mute;
         isMuted = false;
-        localStorage.audioWasMuted = false;
     }
 });
 
@@ -52,18 +48,3 @@ stopButton.addEventListener('click', () => {
     audio.currentTime = 0;
     playPauseButton.innerHTML = play;
 });
-
-window.onload = function(){
-
-    if ((localStorage.getItem("audioWasPaused") === null)) {
-        playPauseButton.click();
-    } else if (localStorage.getItem("audioWasPaused") == "false") {
-        playPauseButton.click();
-    }
-
-    if ((localStorage.getItem("audioWasMuted") === null)) {
-        muteButton.click();
-    } else if (localStorage.getItem("audioWasMuted") == "true") {
-        muteButton.click();
-    }
-}

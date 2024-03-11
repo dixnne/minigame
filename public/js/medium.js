@@ -103,8 +103,8 @@ function start() {
         stats = [
             {
                 username: localStorage.name,
-                mediumTime: 0,
-                mediumPoints: 0,
+                easyTime: 0,
+                easyPoints: 0,
                 mediumTime: 0,
                 mediumPoints: 0,
                 hardTime: 0,
@@ -129,8 +129,8 @@ function start() {
     if (playerStats == "") {
         playerStats = {
             username: localStorage.name,
-            mediumTime: 0,
-            mediumPoints: 0,
+            easyTime: 0,
+            easyPoints: 0,
             mediumTime: 0,
             mediumPoints: 0,
             hardTime: 0,

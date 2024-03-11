@@ -412,7 +412,7 @@ function drawScenarios(scenarios) {
 
 function checkTime() {
     if (playerStats.easyTime > time || playerStats.easyTime == 0) {
-        playerStats.easyTime = time;
+        playerStats.easyTime = time; 
     } 
     playerStats.lastTime = time;
 }

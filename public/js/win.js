@@ -307,29 +307,29 @@ ctxWin.strokeStyle= '#FF4A4A';
 ctxWin.font = "25px cursive";
 ctxWin.strokeText("Dixnne", 70, 320);
 ctxWin.strokeText("Monts", 70, 370);
-ctxWin.strokeText("Keni", 230, 320);
-ctxWin.strokeText("Erik", 230, 370);
+ctxWin.strokeText("Kenji", 230, 320);
+ctxWin.strokeText("Eric", 230, 370);
 
 ctxWin.strokeStyle= '#FF9551';
 ctxWin.strokeText("Dixnne", 68, 318);
 ctxWin.strokeText("Monts", 68, 368);
-ctxWin.strokeText("Keni", 228, 318);
-ctxWin.strokeText("Erik", 228, 368);
+ctxWin.strokeText("Kenji", 228, 318);
+ctxWin.strokeText("Eric", 228, 368);
 
 ctxWin.strokeStyle= '#6FEDD6';
 ctxWin.strokeText("Dixnne", 66, 316);
 ctxWin.strokeText("Monts", 66, 366);
-ctxWin.strokeText("Keni", 226, 316);
-ctxWin.strokeText("Erik", 226, 366);
+ctxWin.strokeText("Kenji", 226, 316);
+ctxWin.strokeText("Eric", 226, 366);
 
 ctxWin.strokeStyle= '#B9FFF8';
 ctxWin.strokeText("Dixnne", 64, 314);
 ctxWin.strokeText("Monts", 64, 364);
-ctxWin.strokeText("Keni", 224, 314);
-ctxWin.strokeText("Erik", 224, 364);
+ctxWin.strokeText("Kenji", 224, 314);
+ctxWin.strokeText("Eric", 224, 364);
 
 ctxWin.fillStyle= '#000000';
 ctxWin.fillText("Dixnne", 62, 312);
 ctxWin.fillText("Monts", 62, 362);
-ctxWin.fillText("Keni", 222, 312);
-ctxWin.fillText("Erik", 222, 362);
+ctxWin.fillText("Kenji", 222, 312);
+ctxWin.fillText("Eric", 222, 362);
